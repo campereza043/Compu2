@@ -1,0 +1,4 @@
+<map id="Sistema" name="Sistema">
+<area shape="rect" id="node1" title="Gestiona la simulación completa." alt="" coords="5,95,80,121"/>
+<area shape="rect" id="node2" href="$classCaja.html" title="Modela el dominio rectangular donde se mueven las partículas." alt="" coords="17,5,68,32"/>
+</map>

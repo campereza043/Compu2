@@ -1,0 +1,3 @@
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/build/CMakeFiles/simulacion.dir
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/build/CMakeFiles/edit_cache.dir
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/build/CMakeFiles/rebuild_cache.dir

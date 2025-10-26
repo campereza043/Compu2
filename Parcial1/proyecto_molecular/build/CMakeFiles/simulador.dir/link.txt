@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -march=native CMakeFiles/simulador.dir/main.cpp.o CMakeFiles/simulador.dir/src/Caja.cpp.o CMakeFiles/simulador.dir/src/Bola.cpp.o CMakeFiles/simulador.dir/src/Sistema.cpp.o -o simulador 

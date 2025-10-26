@@ -1,0 +1,170 @@
+\hypertarget{classSistema}{}\doxysection{Sistema Class Reference}
+\label{classSistema}\index{Sistema@{Sistema}}
+
+
+Gestiona la simulación completa.  
+
+
+
+
+{\ttfamily \#include $<$Sistema.\+h$>$}
+
+
+
+Collaboration diagram for Sistema\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{classSistema__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSistema_adb2b5a979b87479863df1c5fe6f97bd3}{Defina\+Caja}} (double W, double H)
+\begin{DoxyCompactList}\small\item\em Define las dimensiones de la caja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_a2e55c31904e592840591b8a4b1e2e75e}{Reserve}} (int N)
+\begin{DoxyCompactList}\small\item\em Reserva memoria para N bolas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_a80fb8016b03901c05018ec7fa83ecf28}{Inicialice\+Rejilla}} (double m, double r, double vmax)
+\begin{DoxyCompactList}\small\item\em Inicializa las bolas en una rejilla regular con velocidades aleatorias. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_a6e568843c4c39b916a1bc08ac213517f}{Paso}} (double dt)
+\begin{DoxyCompactList}\small\item\em Ejecuta un paso de la simulación. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_a71a81476ad8a8ac2b0a06742b85a78ae}{Encabezado}} (std\+::ofstream \&f)
+\begin{DoxyCompactList}\small\item\em Escribe el encabezado en el archivo de salida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_a1a5e4f4a5d479c7a805d5adc33429ff7}{Guarde}} (std\+::ofstream \&f, double t)
+\begin{DoxyCompactList}\small\item\em Guarda el estado actual de todas las bolas en el archivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCaja}{Caja}} \mbox{\hyperlink{classSistema_a70e1c403e90aafede1b0fedc4b38a2dc}{caja}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classBola}{Bola}} $>$ \mbox{\hyperlink{classSistema_af2d10b21c3c00f7527648d21331c99b9}{bolas}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestiona la simulación completa. 
+
+Responsabilidad\+: Configurar la caja, inicializar las bolas, ejecutar el bucle de simulación y guardar los datos. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSistema_adb2b5a979b87479863df1c5fe6f97bd3}\label{classSistema_adb2b5a979b87479863df1c5fe6f97bd3}} 
+\index{Sistema@{Sistema}!DefinaCaja@{DefinaCaja}}
+\index{DefinaCaja@{DefinaCaja}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{DefinaCaja()}{DefinaCaja()}}
+{\footnotesize\ttfamily void Sistema\+::\+Defina\+Caja (\begin{DoxyParamCaption}\item[{double}]{W,  }\item[{double}]{H }\end{DoxyParamCaption})}
+
+
+
+Define las dimensiones de la caja. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em W} & Ancho de la caja. \\
+\hline
+{\em H} & Alto de la caja. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSistema_a71a81476ad8a8ac2b0a06742b85a78ae}\label{classSistema_a71a81476ad8a8ac2b0a06742b85a78ae}} 
+\index{Sistema@{Sistema}!Encabezado@{Encabezado}}
+\index{Encabezado@{Encabezado}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Encabezado()}{Encabezado()}}
+{\footnotesize\ttfamily void Sistema\+::\+Encabezado (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{f }\end{DoxyParamCaption})}
+
+
+
+Escribe el encabezado en el archivo de salida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flujo de archivo de salida. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSistema_a1a5e4f4a5d479c7a805d5adc33429ff7}\label{classSistema_a1a5e4f4a5d479c7a805d5adc33429ff7}} 
+\index{Sistema@{Sistema}!Guarde@{Guarde}}
+\index{Guarde@{Guarde}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Guarde()}{Guarde()}}
+{\footnotesize\ttfamily void Sistema\+::\+Guarde (\begin{DoxyParamCaption}\item[{std\+::ofstream \&}]{f,  }\item[{double}]{t }\end{DoxyParamCaption})}
+
+
+
+Guarda el estado actual de todas las bolas en el archivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flujo de archivo de salida. \\
+\hline
+{\em t} & Tiempo actual de la simulación. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSistema_a80fb8016b03901c05018ec7fa83ecf28}\label{classSistema_a80fb8016b03901c05018ec7fa83ecf28}} 
+\index{Sistema@{Sistema}!InicialiceRejilla@{InicialiceRejilla}}
+\index{InicialiceRejilla@{InicialiceRejilla}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{InicialiceRejilla()}{InicialiceRejilla()}}
+{\footnotesize\ttfamily void Sistema\+::\+Inicialice\+Rejilla (\begin{DoxyParamCaption}\item[{double}]{m,  }\item[{double}]{r,  }\item[{double}]{vmax }\end{DoxyParamCaption})}
+
+
+
+Inicializa las bolas en una rejilla regular con velocidades aleatorias. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Masa de las bolas. \\
+\hline
+{\em r} & Radio de las bolas. \\
+\hline
+{\em vmax} & Magnitud máxima de la velocidad inicial. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSistema_a6e568843c4c39b916a1bc08ac213517f}\label{classSistema_a6e568843c4c39b916a1bc08ac213517f}} 
+\index{Sistema@{Sistema}!Paso@{Paso}}
+\index{Paso@{Paso}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Paso()}{Paso()}}
+{\footnotesize\ttfamily void Sistema\+::\+Paso (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+Ejecuta un paso de la simulación. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Paso de tiempo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSistema_a2e55c31904e592840591b8a4b1e2e75e}\label{classSistema_a2e55c31904e592840591b8a4b1e2e75e}} 
+\index{Sistema@{Sistema}!Reserve@{Reserve}}
+\index{Reserve@{Reserve}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Reserve()}{Reserve()}}
+{\footnotesize\ttfamily void Sistema\+::\+Reserve (\begin{DoxyParamCaption}\item[{int}]{N }\end{DoxyParamCaption})}
+
+
+
+Reserva memoria para N bolas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em N} & Número de bolas. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSistema_af2d10b21c3c00f7527648d21331c99b9}\label{classSistema_af2d10b21c3c00f7527648d21331c99b9}} 
+\index{Sistema@{Sistema}!bolas@{bolas}}
+\index{bolas@{bolas}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{bolas}{bolas}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classBola}{Bola}}$>$ Sistema\+::bolas\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSistema_a70e1c403e90aafede1b0fedc4b38a2dc}\label{classSistema_a70e1c403e90aafede1b0fedc4b38a2dc}} 
+\index{Sistema@{Sistema}!caja@{caja}}
+\index{caja@{caja}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{caja}{caja}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCaja}{Caja}} Sistema\+::caja\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Sistema_8h}{Sistema.\+h}}\item 
+src/\mbox{\hyperlink{Sistema_8cpp}{Sistema.\+cpp}}\end{DoxyCompactItemize}
