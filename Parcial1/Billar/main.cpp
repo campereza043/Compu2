@@ -78,7 +78,7 @@ long pasos_por_frame = static_cast<long>(dt_frame / dt_sim);
         system("python3 ../scripts/graficar.py");
     } else if (op == 'g' || op == 'G') {
         std::cout << "Ejecutando script de Gnuplot..." << std::endl;
-        system("gnuplot -p ../scripts/graficar.gnuplot");
+        system("gnuplot ../scripts/graficar.gnuplot");
     }
 
     return 0;
