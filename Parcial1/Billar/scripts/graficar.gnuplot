@@ -7,7 +7,6 @@ reset session
 
 print "INICIANDO GENERACIÓN DE GRÁFICOS"
 
-
 # Inicializar variables (serán sobrescritas con los valores del archivo)
 W = 1
 H = 1
@@ -47,7 +46,6 @@ print "Total de frames: ", total_frames
 # =============================================
 print "\n"
 print "GENERANDO GIF ANIMADO"
-
 
 # Configuración del terminal para GIF animado
 set terminal gif animate delay 5 loop 0 size 800,600
@@ -107,7 +105,6 @@ print "✓ GIF animado guardado en: ../results/animacion_billar.gif"
 print "\n"
 print "GENERANDO DIAGRAMA DE TRAYECTORIAS"
 
-
 # Configuración para PNG
 set terminal pngcairo size 800,600 enhanced font 'Arial,12'
 set output '../results/trayectorias_gp.png'
@@ -134,7 +131,7 @@ set output
 print "✓ Diagrama de trayectorias guardado en: ../results/trayectorias_gp.png"
 
 # =============================================
-# 3. GENERAR HISTOGRAMA DE VELOCIDADES
+# 3. GENERAR HISTOGRAMA DE VELOCIDADES (SOLO GNUPLOT)
 # =============================================
 print "\n"
 print "GENERANDO HISTOGRAMA DE VELOCIDADES"
@@ -152,10 +149,20 @@ set autoscale
 vel_x(i) = 4 + 4*(i-1)    # Columna vx para partícula i
 vel_y(i) = 5 + 4*(i-1)    # Columna vy para partícula i
 
-# Calcular magnitudes de velocidad usando un script externo
-# Primero, creamos un archivo temporal con todas las magnitudes de velocidad
-comando_awk = sprintf("awk '!/^#/ {for(i=1; i<=%d; i++) {vx=$(4+4*(i-1)); vy=$(5+4*(i-1)); if(vx!=\"\" && vy!=\"\") print sqrt(vx*vx + vy*vy)}}' ../results/trayectorias.dat > ../results/velocidades_tmp.dat", N)
-system(comando_awk)
+# Crear archivo temporal usando solo gnuplot
+set print '../results/velocidades_tmp.dat'
+do for [i=0:total_frames-1] {
+    stats '../results/trayectorias.dat' every ::i::i using 1 nooutput
+    do for [j=1:N] {
+        stats '../results/trayectorias.dat' every ::i::i using (column(vel_x(j))) nooutput
+        vx_val = STATS_min
+        stats '../results/trayectorias.dat' every ::i::i using (column(vel_y(j))) nooutput
+        vy_val = STATS_min
+        velocidad = sqrt(vx_val**2 + vy_val**2)
+        print sprintf("%.6f", velocidad)
+    }
+}
+set print
 
 # Leer el archivo temporal y calcular estadísticas
 stats '../results/velocidades_tmp.dat' using 1 nooutput
@@ -178,14 +185,12 @@ set title 'Distribución de Velocidades'
 set grid
 set key top right
 
-# Crear histograma
-binwidth = (STATS_max - STATS_min) / 30
-set boxwidth binwidth
+# Crear histograma usando smooth frequency
+bin_number = 30
 set style fill solid 0.5 border
 
-plot '../results/velocidades_tmp.dat' using (binwidth*(floor(($1-STATS_min)/binwidth)+0.5)+STATS_min):(1) \
-    smooth freq with boxes lc rgb 'purple' title 'Distribución', \
-    velocidad_promedio title sprintf('Promedio: %.3f', velocidad_promedio) with lines lw 2 lc rgb 'red'
+plot '../results/velocidades_tmp.dat' using 1 smooth frequency with boxes lc rgb 'purple' title 'Distribución', \
+     velocidad_promedio with lines lw 2 lc rgb 'red' title sprintf('Promedio: %.3f', velocidad_promedio)
 
 set output
 print "✓ Histograma de velocidades guardado en: ../results/histograma_velocidades_gp.png"
