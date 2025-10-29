@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/simulador.dir/src/Bola.cpp.o CMakeFiles/simulador.dir/src/Caja.cpp.o CMakeFiles/simulador.dir/src/Sistema.cpp.o CMakeFiles/simulador.dir/src/main.cpp.o -o simulador 

@@ -1,3 +1,0 @@
-/home/debian12/Documentos/UD/Compu2/Parcial1/N-Particulas/build/CMakeFiles/simulador.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/N-Particulas/build/CMakeFiles/edit_cache.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/N-Particulas/build/CMakeFiles/rebuild_cache.dir

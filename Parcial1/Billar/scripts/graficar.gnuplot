@@ -1,9 +1,12 @@
-# graficar.gnuplot - Script con partículas del mismo color y forma
+# graficar.gnuplot - Script completo para GIF, trayectorias e histograma
 reset session
 
-# Configuración del terminal para GIF animado
-set terminal gif animate delay 5 loop 0 size 800,600
-set output '../results/animacion_billar.gif'
+# =============================================
+# CONFIGURACIÓN INICIAL Y LECTURA DE PARÁMETROS
+# =============================================
+
+print "INICIANDO GENERACIÓN DE GRÁFICOS"
+
 
 # Inicializar variables (serán sobrescritas con los valores del archivo)
 W = 1
@@ -24,6 +27,32 @@ print "  Ancho de caja (W): ", W
 print "  Alto de caja (H): ", H  
 print "  Radio de partículas: ", R_BOLA
 
+# Configuración para leer el archivo
+set datafile commentschars "#"
+set datafile separator whitespace
+
+# Contar número de frames y determinar número de partículas
+stats '../results/trayectorias.dat' using 1 nooutput
+total_frames = STATS_records
+
+stats '../results/trayectorias.dat' using 2 nooutput
+num_columns = STATS_columns
+N = (num_columns - 1) / 4  # Restamos columna de tiempo, cada partícula tiene 4 columnas
+
+print "Número de partículas detectadas: ", N
+print "Total de frames: ", total_frames
+
+# =============================================
+# 1. GENERAR GIF ANIMADO
+# =============================================
+print "\n"
+print "GENERANDO GIF ANIMADO"
+
+
+# Configuración del terminal para GIF animado
+set terminal gif animate delay 5 loop 0 size 800,600
+set output '../results/animacion_billar.gif'
+
 # Configuración de los rangos y aspecto
 set xrange [0:W]
 set yrange [0:H]
@@ -36,22 +65,6 @@ set key off
 # Dibujar el borde de la caja
 set object 1 rect from 0,0 to W,H front fillstyle empty border lc rgb 'black' lw 2
 
-# Configuración para leer el archivo
-set datafile commentschars "#"
-set datafile separator whitespace
-
-# Contar número de frames
-stats '../results/trayectorias.dat' using 1 nooutput
-total_frames = STATS_records
-
-# Determinar número de partículas contando columnas
-stats '../results/trayectorias.dat' using 2 nooutput
-num_columns = STATS_columns
-N = (num_columns - 1) / 4  # Restamos columna de tiempo, cada partícula tiene 4 columnas
-
-print "Número de partículas detectadas: ", N
-print "Total de frames: ", total_frames
-
 # Muestreo para no hacer el GIF demasiado grande
 muestreo = 1
 if (total_frames > 500) {
@@ -59,7 +72,8 @@ if (total_frames > 500) {
     print "Muestreando: usando 1 de cada ", muestreo, " frames"
 }
 
-print "Frames a procesar: ", int(total_frames/muestreo)
+frames_a_procesar = int(total_frames/muestreo)
+print "Frames a procesar: ", frames_a_procesar
 
 # Función para obtener columnas de posición
 part_x(i) = 2 + 4*(i-1)    # Columna x para partícula i
@@ -72,7 +86,7 @@ do for [i=0:total_frames-1:muestreo] {
     stats '../results/trayectorias.dat' every ::i::i using 1 nooutput
     current_time = STATS_min
     
-    set title sprintf('Tiempo: %.2f s - Frame: %d/%d', current_time, frame_count+1, int(total_frames/muestreo))
+    set title sprintf('Tiempo: %.2f s - Frame: %d/%d', current_time, frame_count+1, frames_a_procesar)
     
     # Plot para cada partícula - TODAS CON EL MISMO COLOR Y FORMA
     plot for [j=1:N] '../results/trayectorias.dat' \
@@ -85,10 +99,111 @@ do for [i=0:total_frames-1:muestreo] {
 
 set output  # Cerrar el archivo GIF
 
-print " "
-print "¡Animación completada!"
-print "GIF guardado en: ../results/animacion_billar.gif"
-print "Resumen:"
-print "  - Dimensiones: ", W, "x", H
-print "  - Frames procesados: ", frame_count
-print "  - Partículas: ", N
+print "✓ GIF animado guardado en: ../results/animacion_billar.gif"
+
+# =============================================
+# 2. GENERAR DIAGRAMA DE TRAYECTORIAS
+# =============================================
+print "\n"
+print "GENERANDO DIAGRAMA DE TRAYECTORIAS"
+
+
+# Configuración para PNG
+set terminal pngcairo size 800,600 enhanced font 'Arial,12'
+set output '../results/trayectorias_gp.png'
+
+# Configuración del gráfico
+set xrange [0:W]
+set yrange [0:H]
+set size ratio -1
+set grid
+set xlabel 'x'
+set ylabel 'y'
+set title 'Trayectorias de las Partículas'
+set key off
+
+# Dibujar el borde de la caja
+set object 1 rect from 0,0 to W,H front fillstyle empty border lc rgb 'black' lw 2
+
+# Graficar todas las trayectorias
+plot for [j=1:N] '../results/trayectorias.dat' \
+    using (column(part_x(j))):(column(part_y(j))) \
+    with points pt 7 ps 0.5 lc rgb 'purple' title ''
+
+set output
+print "✓ Diagrama de trayectorias guardado en: ../results/trayectorias_gp.png"
+
+# =============================================
+# 3. GENERAR HISTOGRAMA DE VELOCIDADES
+# =============================================
+print "\n"
+print "GENERANDO HISTOGRAMA DE VELOCIDADES"
+
+# Configuración para PNG del histograma
+set terminal pngcairo size 800,600 enhanced font 'Arial,12'
+set output '../results/histograma_velocidades_gp.png'
+
+# Resetear configuraciones para el histograma
+unset object
+set size noratio
+set autoscale
+
+# Función para obtener columnas de velocidad
+vel_x(i) = 4 + 4*(i-1)    # Columna vx para partícula i
+vel_y(i) = 5 + 4*(i-1)    # Columna vy para partícula i
+
+# Calcular magnitudes de velocidad usando un script externo
+# Primero, creamos un archivo temporal con todas las magnitudes de velocidad
+comando_awk = sprintf("awk '!/^#/ {for(i=1; i<=%d; i++) {vx=$(4+4*(i-1)); vy=$(5+4*(i-1)); if(vx!=\"\" && vy!=\"\") print sqrt(vx*vx + vy*vy)}}' ../results/trayectorias.dat > ../results/velocidades_tmp.dat", N)
+system(comando_awk)
+
+# Leer el archivo temporal y calcular estadísticas
+stats '../results/velocidades_tmp.dat' using 1 nooutput
+
+velocidad_promedio = STATS_mean
+velocidad_min = STATS_min
+velocidad_max = STATS_max
+velocidad_std = STATS_stddev
+
+print "Estadísticas de velocidad:"
+print sprintf("  Velocidad promedio: %.4f", velocidad_promedio)
+print sprintf("  Velocidad mínima: %.4f", velocidad_min)
+print sprintf("  Velocidad máxima: %.4f", velocidad_max)
+print sprintf("  Desviación estándar: %.4f", velocidad_std)
+
+# Configurar el histograma
+set xlabel 'Magnitud de Velocidad'
+set ylabel 'Frecuencia'
+set title 'Distribución de Velocidades'
+set grid
+set key top right
+
+# Crear histograma
+binwidth = (STATS_max - STATS_min) / 30
+set boxwidth binwidth
+set style fill solid 0.5 border
+
+plot '../results/velocidades_tmp.dat' using (binwidth*(floor(($1-STATS_min)/binwidth)+0.5)+STATS_min):(1) \
+    smooth freq with boxes lc rgb 'purple' title 'Distribución', \
+    velocidad_promedio title sprintf('Promedio: %.3f', velocidad_promedio) with lines lw 2 lc rgb 'red'
+
+set output
+print "✓ Histograma de velocidades guardado en: ../results/histograma_velocidades_gp.png"
+
+# Limpiar archivo temporal
+system("rm -f ../results/velocidades_tmp.dat")
+
+# =============================================
+# RESUMEN FINAL
+# =============================================
+print "\n"
+print "RESUMEN EJECUCIÓN"
+print "✓ GIF animado: ../results/animacion_billar.gif"
+print "✓ Diagrama de trayectorias: ../results/trayectorias_gp.png"
+print "✓ Histograma de velocidades: ../results/histograma_velocidades_gp.png"
+print "✓ Dimensiones de la caja: ", W, " x ", H
+print "✓ Partículas simuladas: ", N
+print "✓ Tiempo total de simulación: ", current_time, " s"
+print "✓ Frames procesados en GIF: ", frame_count
+print sprintf("✓ Velocidad promedio: %.4f", velocidad_promedio)
+print "¡Todos los gráficos han sido generados exitosamente!"

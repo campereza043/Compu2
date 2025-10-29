@@ -1,6 +1,0 @@
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/simulador.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/doc.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/copiar_scripts.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/crear_directorios.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/edit_cache.dir
-/home/debian12/Documentos/UD/Compu2/Parcial1/proyecto_molecular/build/CMakeFiles/rebuild_cache.dir
