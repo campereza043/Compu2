@@ -1,0 +1,6 @@
+# Minimal Doxyfile para generar documentación
+PROJECT_NAME = "VanDerPolCoupled"
+OUTPUT_DIRECTORY = docs
+INPUT = include src
+RECURSIVE = YES
+GENERATE_LATEX = YES

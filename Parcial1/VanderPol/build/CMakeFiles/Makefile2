@@ -72,6 +72,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/vanderpol.dir/clean
+clean: CMakeFiles/docs.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,7 +82,7 @@ clean: CMakeFiles/vanderpol.dir/clean
 CMakeFiles/vanderpol.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vanderpol.dir/build.make CMakeFiles/vanderpol.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vanderpol.dir/build.make CMakeFiles/vanderpol.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles --progress-num=1,2,3,4 "Built target vanderpol"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles --progress-num=2,3,4,5 "Built target vanderpol"
 .PHONY : CMakeFiles/vanderpol.dir/all
 
 # Build rule for subdir invocation for target.
@@ -99,6 +100,32 @@ vanderpol: CMakeFiles/vanderpol.dir/rule
 CMakeFiles/vanderpol.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vanderpol.dir/build.make CMakeFiles/vanderpol.dir/clean
 .PHONY : CMakeFiles/vanderpol.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/docs.dir
+
+# All Build rule for target.
+CMakeFiles/docs.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/docs.dir/build.make CMakeFiles/docs.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/docs.dir/build.make CMakeFiles/docs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles --progress-num=1 "Built target docs"
+.PHONY : CMakeFiles/docs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/docs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/docs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles 0
+.PHONY : CMakeFiles/docs.dir/rule
+
+# Convenience name for target.
+docs: CMakeFiles/docs.dir/rule
+.PHONY : docs
+
+# clean rule for target.
+CMakeFiles/docs.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/docs.dir/build.make CMakeFiles/docs.dir/clean
+.PHONY : CMakeFiles/docs.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

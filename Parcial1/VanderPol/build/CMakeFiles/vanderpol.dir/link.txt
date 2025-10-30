@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/vanderpol.dir/src/Sistema.cpp.o CMakeFiles/vanderpol.dir/src/VanDerPol.cpp.o CMakeFiles/vanderpol.dir/src/main.cpp.o -o vanderpol 
+/usr/bin/c++ -Wall -Wextra -O3 -march=native -O3 -DNDEBUG CMakeFiles/vanderpol.dir/src/Sistema.cpp.o CMakeFiles/vanderpol.dir/src/VanDerPol.cpp.o CMakeFiles/vanderpol.dir/src/main.cpp.o -o vanderpol 

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/include
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -Wall -Wextra -O3 -march=native -O3 -DNDEBUG -std=gnu++17
 

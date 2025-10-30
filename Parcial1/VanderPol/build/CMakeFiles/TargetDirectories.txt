@@ -1,4 +1,5 @@
 /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles/vanderpol.dir
+/home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles/docs.dir
 /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles/edit_cache.dir
 /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles/rebuild_cache.dir
 /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/build/CMakeFiles/list_install_components.dir

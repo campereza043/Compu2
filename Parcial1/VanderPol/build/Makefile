@@ -174,6 +174,19 @@ vanderpol/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vanderpol.dir/build.make CMakeFiles/vanderpol.dir/build
 .PHONY : vanderpol/fast
 
+#=============================================================================
+# Target rules for targets named docs
+
+# Build rule for target.
+docs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 docs
+.PHONY : docs
+
+# fast build rule for target.
+docs/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/docs.dir/build.make CMakeFiles/docs.dir/build
+.PHONY : docs/fast
+
 src/Sistema.o: src/Sistema.cpp.o
 .PHONY : src/Sistema.o
 
@@ -258,6 +271,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... docs"
 	@echo "... vanderpol"
 	@echo "... src/Sistema.o"
 	@echo "... src/Sistema.i"
