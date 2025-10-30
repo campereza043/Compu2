@@ -25,7 +25,9 @@ VanderPol/
 │
 ├── scripts/
 │   ├── gnuplot/
+│       └── plot.gp
 │   └── python/
+│       └── plot.py
 │
 ├── src/
 │   ├── main.cpp
