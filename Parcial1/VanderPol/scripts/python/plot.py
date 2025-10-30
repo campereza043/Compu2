@@ -41,6 +41,7 @@ def main():
     
     print(f"   {len(t)} puntos de datos procesados")
 
+    # [Todas las gráficas estáticas anteriores se mantienen igual...]
     # 1. Gráfica de posición vs tiempo (x1 y x2)
     print("   Generando gráfica de posición vs tiempo...")
     plt.figure(figsize=(10, 6))
@@ -278,20 +279,20 @@ def main():
         except Exception as e:
             print(f"   ⚠️  Error procesando validación de dt: {e}")
 
-    # 12. Generar GIF si se solicita
+    # 12. Generar GIFs si se solicita
     if '--gif' in sys.argv:
-        print("   🎬 Generando GIF animado...")
-        animate_script = SCRIPTS_DIR / "animate_lissajous.py"
+        print("   🎬 Generando GIFs animados...")
+        animate_script = SCRIPTS_DIR / "animate_phase_spaces.py"
         if animate_script.exists():
             try:
                 subprocess.run([
                     'python3', str(animate_script), 
                     str(data_file),
-                    str(RESULTS_DIR / "lissajous_evolution.gif")
+                    str(RESULTS_DIR)
                 ], check=True, cwd=PROJECT_ROOT)
-                print("   ✓ GIF creado exitosamente")
+                print("   ✓ GIFs creados exitosamente")
             except subprocess.CalledProcessError as e:
-                print(f"   ❌ Error generando GIF: {e}")
+                print(f"   ❌ Error generando GIFs: {e}")
             except FileNotFoundError:
                 print("   ❌ Python3 no encontrado")
         else:
@@ -301,14 +302,14 @@ def main():
     print(f"   Gráficas guardadas en: {RESULTS_DIR}")
     
     # Mostrar archivos generados
-    generated_files = list(RESULTS_DIR.glob("*.png"))
-    if (RESULTS_DIR / "lissajous_evolution.gif").exists():
-        generated_files.append(RESULTS_DIR / "lissajous_evolution.gif")
+    generated_files = list(RESULTS_DIR.glob("*.*"))
+    image_files = [f for f in generated_files if f.suffix.lower() in ['.png', '.gif']]
     
-    if generated_files:
+    if image_files:
         print(f"\n   Archivos generados:")
-        for f in sorted(generated_files):
-            print(f"   - {f.name}")
+        for f in sorted(image_files):
+            size_mb = f.stat().st_size / (1024 * 1024)
+            print(f"   - {f.name} ({size_mb:.2f} MB)")
 
     return 0
 
