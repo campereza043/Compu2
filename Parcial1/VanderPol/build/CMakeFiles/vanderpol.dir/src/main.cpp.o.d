@@ -169,8 +169,4 @@ CMakeFiles/vanderpol.dir/src/main.cpp.o: \
  /usr/include/c++/12/ext/aligned_buffer.h \
  /usr/include/c++/12/bits/fs_dir.h /usr/include/c++/12/bits/fs_ops.h \
  /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/include/Sistema.h \
- /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_uninitialized.h \
- /usr/include/c++/12/bits/stl_vector.h \
- /usr/include/c++/12/bits/stl_bvector.h \
- /usr/include/c++/12/bits/vector.tcc \
  /home/debian12/Documentos/UD/Compu2/Parcial1/VanderPol/include/VanDerPol.h

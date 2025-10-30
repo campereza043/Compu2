@@ -11,7 +11,10 @@
  * Implementa RK4 para el sistema acoplado de 4 variables:
  *  x1, v1, x2, v2
  *
- * Salida de datos: columnas t x1 v1 x2 v2
+ * Además incluye utilidades para:
+ *  - generar mapa de Poincaré (x1=0, v1>0)
+ *  - calcular el mayor exponente de Lyapunov (Benettin)
+ *  - validación de paso de tiempo (dt)
  */
 
 class Sistema {
@@ -21,27 +24,32 @@ public:
 
     Sistema(double mu1, double w01, double mu2, double w02, double k_);
 
-    /**
-     * @brief Simula desde t0 a tf con paso dt y guarda datos en outfile.
-     * Formato: columnas "t x1 v1 x2 v2"
-     */
+    /** Simula y guarda "t x1 v1 x2 v2" */
     void simulate(double t0, double tf, double dt, const std::string &outfile,
                   double x10 = 0.0, double v10 = 0.0, double x20 = 0.0, double v20 = 0.0) const;
 
-private:
-    /**
-     * @brief Calcula las derivadas del sistema acoplado en el estado dado.
-     * @param state arreglo de 4 elementos: [x1, v1, x2, v2]
-     * @param deriv arreglo de salida con las 4 derivadas
-     */
-    void system_derivatives(const double state[4], double deriv[4]) const;
+    /** Genera archivo de Poincaré (cruces x1=0, v1>0) con columnas t x1 v1 x2 v2 (solo puntos de sección) */
+    void generate_poincare(double t0, double tf, double dt, const std::string &outfile_poincare,
+                            double x10, double v10, double x20, double v20) const;
 
     /**
-     * @brief Un paso RK4 para el sistema acoplado (actualiza state in-place).
-     * @param t tiempo actual (no necesario en este sistema autónomo salvo si se añade forzamiento)
-     * @param dt paso
-     * @param state arreglo de 4 elementos (x1,v1,x2,v2) modificado in-place
+     * Calcula el mayor exponente de Lyapunov (Benettin).
+     * Guarda un registro temporal en outfile_progress (time, lambda_running) y
+     * al final escribe lambda_final en outfile_final.
      */
+    void compute_lyapunov(double t0, double tf, double dt, double renorm_time,
+                          const std::string &outfile_progress, const std::string &outfile_final,
+                          double x10, double v10, double x20, double v20, double eps0 = 1e-8) const;
+
+    /**
+     * Validación de dt: integra con dt, dt/2, dt/4 y guarda la comparación final en outfile.
+     * Formato: dt x1_final x2_final | error_vs_dt (abs differences)
+     */
+    void validate_dt(double t0, double tf, double dt, const std::string &outfile,
+                     double x10, double v10, double x20, double v20) const;
+
+private:
+    void system_derivatives(const double state[4], double deriv[4]) const;
     void rk4_step(double t, double dt, double state[4]) const;
 };
 
