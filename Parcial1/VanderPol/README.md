@@ -165,6 +165,3 @@ Esto creará la documentación en formato HTML en el directorio especificado por
 
 ---
 
-## Licencia
-
-Este código puede utilizarse libremente con fines académicos o de investigación, citando al autor original del proyecto.
