@@ -10,31 +10,32 @@ El código también genera automáticamente gráficos y animaciones que se guard
 
 ```
 VanderPol/
-│
 ├── build/
+├── documents/
+│   └── Exam_1_vander.pdf
 │
 ├── include/
-│   ├── VanDerPol.h
-│   └── Sistema.h
-│
-├── src/
-│   ├── VanDerPol.cpp
-│   ├── Sistema.cpp
-│   └── main.cpp
-│
-├── scripts/
-│   ├── gnuplot/
-│   │   └── plot.gp
-│   └── python/
-│       └── plot.py
+│   ├── Sistema.h
+│   └── VanDerPol.h
 │
 ├── results/
 │   ├── datos.txt
 │   ├── lissajous_py.png
 │   └── x_vs_t.png
 │
+├── scripts/
+│   ├── gnuplot/
+│   └── python/
+│
+├── src/
+│   ├── main.cpp
+│   ├── Sistema.cpp
+│   └── VanDerPol.cpp
+│
 ├── CMakeLists.txt
-└── Doxyfile
+├── Doxyfile
+└── README.md
+
 ```
 
 ---
