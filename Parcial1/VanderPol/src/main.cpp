@@ -1,3 +1,42 @@
+/**
+ * @mainpage VanDerPol – Sistema de osciladores acoplados
+ * @brief Manual técnico y de usuario
+ * @details
+ * Este proyecto simula y analiza un par de osciladores de Van der Pol
+ * acoplados linealmente.  
+ * Permite explorar fenómenos de **sincronización, caos y bifurcaciones**.
+ *
+ * ### 🔧 Compilación
+ * ```bash
+ * mkdir build && cd build
+ * cmake ..
+ * make
+ * ```
+ *
+ * ### 🚀 Ejecución
+ * ```bash
+ * ./vanderpol --auto
+ * ```
+ *
+ * ### 🧩 Opciones disponibles
+ * - `--auto` Ejecuta todas las simulaciones y análisis.
+ * - `--validate_dt` Prueba diferentes pasos de tiempo.
+ * - `--poincare` Genera el mapa de Poincaré.
+ * - `--lyapunov` Calcula el exponente de Lyapunov.
+ * - `--gif` Genera animaciones de las trayectorias.
+ * - `--interactive` Permite ingresar los parámetros manualmente.
+ *
+ * ### 📊 Resultados
+ * Los resultados se almacenan en el directorio `results/`:
+ * - `datos.txt`: simulación temporal.
+ * - `poincare.txt`: puntos del mapa de Poincaré.
+ * - `lyapunov_final.txt`: valor del exponente de Lyapunov.
+ *
+ * @author Camila Pérez, Sergio Carasquilla
+ * @date 2025
+ */
+
+
 #include <iostream>
 #include <string>
 #include <filesystem>

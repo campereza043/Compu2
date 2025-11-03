@@ -1,3 +1,10 @@
+/**
+ * @file Sistema.cpp
+ * @brief Implementación del sistema acoplado de Van der Pol.
+ * @details
+ * Contiene la implementación completa de la clase `Sistema`, incluyendo
+ * las funciones de integración, análisis de sincronización y cálculo de Lyapunov.
+ */
 #include "Sistema.h"
 #include <fstream>
 #include <iostream>
