@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 # Se elimina el parámetro max_frames de aquí, usaremos la longitud total de los datos.
-def create_lissajous_gif(datafile, output_gif, fps=30): 
+def create_lissajous_gif(datafile, output_gif, fps=240): 
     """Crea un GIF animado de la figura de Lissajous utilizando la máxima resolución de datos."""
     
     try:
