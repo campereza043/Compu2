@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -18,9 +17,14 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
         print(f" Error leyendo archivo: {e}")
         return False
     
+    # Verificar que haya suficientes columnas
+    if data.shape[1] < 5:
+        print(" Error: El archivo de datos debe tener al menos 5 columnas (t, x1, v1, x2, v2).")
+        return False
+
     t, x1, v1, x2, v2 = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
     
-    print(f"   Creando GIF con {len(t)} puntos...")
+    print(f"    Creando GIF con {len(t)} puntos...")
     
     # Limitar frames para GIF razonable
     step = max(1, len(t) // max_frames)
@@ -28,23 +32,26 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
     
     fig, ax = plt.subplots(figsize=(8, 8))
     
-    # Calcular límites con márgenes
-    x1_range = max(x1) - min(x1)
-    x2_range = max(x2) - min(x2)
-    x1_margin = x1_range * 0.1
-    x2_margin = x2_range * 0.1
+    # Calcular límites con márgenes (mejor usar el mismo margen para ambos ejes si la escala es similar)
+    all_x = np.concatenate([x1, x2])
+    min_val, max_val = all_x.min(), all_x.max()
+    data_range = max_val - min_val
+    margin = data_range * 0.1
     
-    ax.set_xlim(min(x1) - x1_margin, max(x1) + x1_margin)
-    ax.set_ylim(min(x2) - x2_margin, max(x2) + x2_margin)
+    # Usar límites que contengan ambas trayectorias o los límites originales si son muy diferentes
+    ax.set_xlim(min(x1) - margin, max(x1) + margin)
+    ax.set_ylim(min(x2) - margin, max(x2) + margin)
     ax.set_xlabel('x1')
     ax.set_ylabel('x2')
     ax.set_title('Evolución de la Figura de Lissajous\nOsciladores de Van der Pol Acoplados')
     ax.grid(True, alpha=0.3)
     
-    line, = ax.plot([], [], 'b-', alpha=0.8, linewidth=1.2)
-    point, = ax.plot([], [], 'ro', markersize=4)
+    # El historial (línea) y el punto actual. Usamos zorder para asegurar que el punto esté encima.
+    line, = ax.plot([], [], 'b-', alpha=0.5, linewidth=1.5, zorder=1) # Línea más fina y tenue
+    point, = ax.plot([], [], 'ro', markersize=6, zorder=3) # Punto más visible
+    
     time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes, fontsize=12,
-                       bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
+                        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
     
     def init():
         line.set_data([], [])
@@ -56,33 +63,35 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
         idx = indices[i]
         current_t = t[idx]
         
-        # Actualizar línea (historial)
-        line.set_data(x1[:idx+1:step], x2[:idx+1:step])
+        # CORRECCIÓN CLAVE: Usamos TODOS los puntos hasta idx para dibujar la línea (sin :step)
+        line.set_data(x1[:idx+1], x2[:idx+1])
         
         # Actualizar punto (posición actual)
         point.set_data([x1[idx]], [x2[idx]])
         
         # Actualizar texto
         progress = (i + 1) / len(indices)
-        time_text.set_text(f'Tiempo: {current_t:.1f}s\nProgreso: {progress:.1%}')
+        time_text.set_text(f'Tiempo: {current_t:.3f}s\nProgreso: {progress:.1%}')
         
         return line, point, time_text
     
-    print("   Generando animación...")
+    print("    Generando animación...")
     anim = animation.FuncAnimation(
         fig, animate, init_func=init,
         frames=len(indices), interval=1000/fps, 
-        blit=True, repeat=True
+        blit=True, repeat=True # Puedes cambiar repeat=False si solo quieres que se reproduzca una vez
     )
     
-    print(f"   Guardando GIF: {output_gif}")
+    print(f"    Guardando GIF: {output_gif}")
     try:
-        anim.save(output_gif, writer='pillow', fps=fps, dpi=120)
-        plt.close()
+        # Usamos un dpi más bajo si el archivo es muy pesado
+        anim.save(output_gif, writer='pillow', fps=fps, dpi=100) 
+        plt.close(fig) # Usar fig para cerrar la figura específica
         return True
     except Exception as e:
-        print(f" Error guardando GIF: {e}")
-        plt.close()
+        print(f" Error guardando GIF: {e}. ¿Está Pillow instalado?")
+        print(" Intenta: pip install Pillow")
+        plt.close(fig)
         return False
 
 if __name__ == "__main__":
