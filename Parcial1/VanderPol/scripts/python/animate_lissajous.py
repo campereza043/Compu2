@@ -5,8 +5,9 @@ import os
 import sys
 from pathlib import Path
 
-def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
-    """Crea un GIF animado de la figura de Lissajous"""
+# Se elimina el parámetro max_frames de aquí, usaremos la longitud total de los datos.
+def create_lissajous_gif(datafile, output_gif, fps=30): 
+    """Crea un GIF animado de la figura de Lissajous utilizando la máxima resolución de datos."""
     
     try:
         data = np.loadtxt(datafile)
@@ -17,38 +18,37 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
         print(f" Error leyendo archivo: {e}")
         return False
     
-    # Verificar que haya suficientes columnas
     if data.shape[1] < 5:
         print(" Error: El archivo de datos debe tener al menos 5 columnas (t, x1, v1, x2, v2).")
         return False
 
     t, x1, v1, x2, v2 = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
     
-    print(f"    Creando GIF con {len(t)} puntos...")
+    # -------------------------------------------------------------
+    # CAMBIO CLAVE: Usar la longitud total de los datos para los frames.
+    # Esto elimina el "salto" de muestreo.
+    num_data_points = len(t)
+    indices = range(num_data_points)
+    # -------------------------------------------------------------
     
-    # Limitar frames para GIF razonable
-    step = max(1, len(t) // max_frames)
-    indices = range(0, len(t), step)
+    print(f"    Creando GIF con la máxima resolución: {num_data_points} puntos/frames...")
     
     fig, ax = plt.subplots(figsize=(8, 8))
     
-    # Calcular límites con márgenes (mejor usar el mismo margen para ambos ejes si la escala es similar)
-    all_x = np.concatenate([x1, x2])
-    min_val, max_val = all_x.min(), all_x.max()
-    data_range = max_val - min_val
-    margin = data_range * 0.1
+    # Calcular límites con márgenes
+    x1_margin = (max(x1) - min(x1)) * 0.1
+    x2_margin = (max(x2) - min(x2)) * 0.1
     
-    # Usar límites que contengan ambas trayectorias o los límites originales si son muy diferentes
-    ax.set_xlim(min(x1) - margin, max(x1) + margin)
-    ax.set_ylim(min(x2) - margin, max(x2) + margin)
+    ax.set_xlim(min(x1) - x1_margin, max(x1) + x1_margin)
+    ax.set_ylim(min(x2) - x2_margin, max(x2) + x2_margin)
     ax.set_xlabel('x1')
     ax.set_ylabel('x2')
     ax.set_title('Evolución de la Figura de Lissajous\nOsciladores de Van der Pol Acoplados')
     ax.grid(True, alpha=0.3)
     
-    # El historial (línea) y el punto actual. Usamos zorder para asegurar que el punto esté encima.
-    line, = ax.plot([], [], 'b-', alpha=0.5, linewidth=1.5, zorder=1) # Línea más fina y tenue
-    point, = ax.plot([], [], 'ro', markersize=6, zorder=3) # Punto más visible
+    # El historial (línea) y el punto actual. 
+    line, = ax.plot([], [], 'b-', alpha=0.5, linewidth=1.5, zorder=1)
+    point, = ax.plot([], [], 'ro', markersize=6, zorder=3)
     
     time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes, fontsize=12,
                         bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8))
@@ -60,17 +60,18 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
         return line, point, time_text
     
     def animate(i):
-        idx = indices[i]
+        # i es el índice directo, ya no necesitamos la lista 'indices' ni 'step'
+        idx = i 
         current_t = t[idx]
         
-        # CORRECCIÓN CLAVE: Usamos TODOS los puntos hasta idx para dibujar la línea (sin :step)
+        # Dibuja la línea SIN saltos (usando todos los puntos hasta idx)
         line.set_data(x1[:idx+1], x2[:idx+1])
         
-        # Actualizar punto (posición actual)
+        # Actualiza el punto (que se mueve un solo paso de tiempo por frame)
         point.set_data([x1[idx]], [x2[idx]])
         
         # Actualizar texto
-        progress = (i + 1) / len(indices)
+        progress = (i + 1) / num_data_points
         time_text.set_text(f'Tiempo: {current_t:.3f}s\nProgreso: {progress:.1%}')
         
         return line, point, time_text
@@ -78,19 +79,20 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
     print("    Generando animación...")
     anim = animation.FuncAnimation(
         fig, animate, init_func=init,
-        frames=len(indices), interval=1000/fps, 
-        blit=True, repeat=True # Puedes cambiar repeat=False si solo quieres que se reproduzca una vez
+        frames=num_data_points, # CAMBIO CLAVE: Usar todos los puntos como frames
+        interval=1000/fps, 
+        blit=False, # Necesario para evitar problemas visuales
+        repeat=True
     )
     
     print(f"    Guardando GIF: {output_gif}")
     try:
-        # Usamos un dpi más bajo si el archivo es muy pesado
-        anim.save(output_gif, writer='pillow', fps=fps, dpi=100) 
-        plt.close(fig) # Usar fig para cerrar la figura específica
+        # Esto podría tomar más tiempo y crear un GIF grande, pero será el más suave.
+        anim.save(output_gif, writer='pillow', fps=fps, dpi=120) 
+        plt.close(fig)
         return True
     except Exception as e:
-        print(f" Error guardando GIF: {e}. ¿Está Pillow instalado?")
-        print(" Intenta: pip install Pillow")
+        print(f" Error guardando GIF: {e}. Asegúrese de tener 'Pillow' y 'ffmpeg' instalados.")
         plt.close(fig)
         return False
 
