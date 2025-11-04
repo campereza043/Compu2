@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{newunicodechar}
+  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \newunicodechar{²}{${}^{2}$}% Superscript two
+  \newunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+\[
+\begin{cases}
+\ddot{x}_1 - \mu_1(1 - x_1^2)\dot{x}_1 + \omega_{01}^2 x_1 = k(x_2 - x_1), \\
+\ddot{x}_2 - \mu_2(1 - x_2^2)\dot{x}_2 + \omega_{02}^2 x_2 = k(x_1 - x_2).
+\end{cases}
+\]
+\pagebreak
+
+\[
+\frac{d^2x}{dt^2} - \mu (1 - x^2) \frac{dx}{dt} + \omega_0^2 x = F_\text{acople}
+\]
+\pagebreak
+
+$\mu$
+\pagebreak
+
+$\omega_0$
+\pagebreak
+
+$F_\text{acople}$
+\pagebreak
+
+\[
+\begin{cases}
+\dot{x} = v, \\
+\dot{v} = \mu(1 - x^2)v - \omega_0^2 x + F_\text{acople}.
+\end{cases}
+\]
+\pagebreak
+
+\end{document}

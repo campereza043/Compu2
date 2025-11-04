@@ -1,0 +1,55 @@
+\hypertarget{Sistema_8h}{}\doxysection{include/\+Sistema.h File Reference}
+\label{Sistema_8h}\index{include/Sistema.h@{include/Sistema.h}}
+
+
+\mbox{\hyperlink{classSistema}{Sistema}} de dos osciladores de Van der Pol acoplados linealmente.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}Van\+Der\+Pol.\+h\char`\"{}}\newline
+Include dependency graph for Sistema.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{Sistema_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{Sistema_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSistema}{Sistema}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classSistema}{Sistema}} de dos osciladores de Van der Pol acoplados linealmente. 
+
+Esta clase implementa la simulación, análisis y diagnóstico de un par de osciladores de Van der Pol con acoplamiento lineal.
+
+La dinámica se rige por las ecuaciones\+: \[
+\begin{cases}
+\ddot{x}_1 - \mu_1(1 - x_1^2)\dot{x}_1 + \omega_{01}^2 x_1 = k(x_2 - x_1), \\
+\ddot{x}_2 - \mu_2(1 - x_2^2)\dot{x}_2 + \omega_{02}^2 x_2 = k(x_1 - x_2).
+\end{cases}
+\]
+
+Incluye herramientas para\+:
+\begin{DoxyItemize}
+\item Simulación numérica (método RK4)
+\item Análisis de sincronización
+\item Cálculo del exponente de Lyapunov
+\item Validación del paso de tiempo
+\item Análisis de bifurcaciones
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}} 
+\end{DoxySeeAlso}

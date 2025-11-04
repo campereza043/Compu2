@@ -6,19 +6,19 @@
  * acoplados linealmente.  
  * Permite explorar fenómenos de **sincronización, caos y bifurcaciones**.
  *
- * ### 🔧 Compilación
+ * ###  Compilación
  * ```bash
  * mkdir build && cd build
  * cmake ..
  * make
  * ```
  *
- * ### 🚀 Ejecución
+ * ###  Ejecución
  * ```bash
  * ./vanderpol --auto
  * ```
  *
- * ### 🧩 Opciones disponibles
+ * ###  Opciones disponibles
  * - `--auto` Ejecuta todas las simulaciones y análisis.
  * - `--validate_dt` Prueba diferentes pasos de tiempo.
  * - `--poincare` Genera el mapa de Poincaré.
@@ -26,7 +26,7 @@
  * - `--gif` Genera animaciones de las trayectorias.
  * - `--interactive` Permite ingresar los parámetros manualmente.
  *
- * ### 📊 Resultados
+ * ###  Resultados
  * Los resultados se almacenan en el directorio `results/`:
  * - `datos.txt`: simulación temporal.
  * - `poincare.txt`: puntos del mapa de Poincaré.
@@ -142,8 +142,8 @@ int main(int argc, char **argv) {
     }
     
     // Parámetros por defecto
-    double mu1 = 1.0, w01 = 1.0, mu2 = 1.0, w02 = 1.0, k = 0.5;
-    double t0 = 0.0, tf = 200.0, dt = 0.01;
+    double mu1 = 0.2, w01 = 1.0, mu2 = 5.0, w02 = 1.0, k = 0.5;
+    double t0 = 0.0, tf = 500.0, dt = 0.001;
     double x10 = 1.0, v10 = 0.0, x20 = 0.5, v20 = 0.0;
 
     // Leer parámetros de línea de comandos

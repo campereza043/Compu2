@@ -12,10 +12,10 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
     try:
         data = np.loadtxt(datafile)
         if data.size == 0:
-            print("❌ Archivo vacío")
+            print(" Archivo vacío")
             return False
     except Exception as e:
-        print(f"❌ Error leyendo archivo: {e}")
+        print(f" Error leyendo archivo: {e}")
         return False
     
     t, x1, v1, x2, v2 = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
@@ -81,7 +81,7 @@ def create_lissajous_gif(datafile, output_gif, max_frames=300, fps=25):
         plt.close()
         return True
     except Exception as e:
-        print(f"❌ Error guardando GIF: {e}")
+        print(f" Error guardando GIF: {e}")
         plt.close()
         return False
 

@@ -1,0 +1,125 @@
+\hypertarget{classSistema}{}\doxysection{Sistema Class Reference}
+\label{classSistema}\index{Sistema@{Sistema}}
+
+
+Collaboration diagram for Sistema\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{classSistema__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSistema_a67a9c4ff9773d54c5c433c28d227105d}{Sistema}} (double mu1, double w01, double mu2, double w02, double k\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor del sistema acoplado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSistema_ab89ff3f5a358dbbad942cc3f0a227ca0}{simulate}} (double t0, double tf, double dt, const std\+::string \&outfile, double x10=0.\+0, double v10=0.\+0, double x20=0.\+0, double v20=0.\+0) const
+\begin{DoxyCompactList}\small\item\em Simula la evolución temporal del sistema. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_a03f195e104b12278fc86c70a6d4262df}\label{classSistema_a03f195e104b12278fc86c70a6d4262df}} 
+void {\bfseries analyze\+\_\+synchronization} (double t0, double tf, double dt, const std\+::string \&outfile\+\_\+sync, double x10, double v10, double x20, double v20) const
+\begin{DoxyCompactList}\small\item\em Analiza la sincronización entre los dos osciladores. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_acd454aadfc92b168f41301daf2b67da6}\label{classSistema_acd454aadfc92b168f41301daf2b67da6}} 
+void {\bfseries generate\+\_\+poincare} (double t0, double tf, double dt, const std\+::string \&outfile\+\_\+poincare, double x10, double v10, double x20, double v20) const
+\begin{DoxyCompactList}\small\item\em Genera un mapa de Poincaré detectando cruces por cero. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_ad9fd9f67336bf7447a1e8036db6b22a9}\label{classSistema_ad9fd9f67336bf7447a1e8036db6b22a9}} 
+void {\bfseries compute\+\_\+power\+\_\+spectrum} (const std\+::string \&datafile, const std\+::string \&outfile\+\_\+spectrum) const
+\begin{DoxyCompactList}\small\item\em Calcula el espectro de potencia (placeholder). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_a27ee9e5b1969f8b33f53716346083dc7}\label{classSistema_a27ee9e5b1969f8b33f53716346083dc7}} 
+void {\bfseries compute\+\_\+lyapunov} (double t0, double tf, double dt, double renorm\+\_\+time, const std\+::string \&outfile\+\_\+progress, const std\+::string \&outfile\+\_\+final, double x10, double v10, double x20, double v20, double eps0=1e-\/8) const
+\begin{DoxyCompactList}\small\item\em Calcula el exponente de Lyapunov mediante el método de Benettin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_ae69b8df9754c36b502a46d891a30007f}\label{classSistema_ae69b8df9754c36b502a46d891a30007f}} 
+void {\bfseries validate\+\_\+dt} (double t0, double tf, double dt, const std\+::string \&outfile, double x10, double v10, double x20, double v20) const
+\begin{DoxyCompactList}\small\item\em Verifica la convergencia temporal reduciendo el paso de integración. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSistema_a21aa0cdb25f84d4f3826449dde616bf6}\label{classSistema_a21aa0cdb25f84d4f3826449dde616bf6}} 
+void {\bfseries bifurcation\+\_\+analysis} (double mu\+\_\+min, double mu\+\_\+max, int steps, double tf, double dt, const std\+::string \&outfile) const
+\begin{DoxyCompactList}\small\item\em Realiza un análisis de bifurcación variando el parámetro μ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSistema_a8bd27b5bdc2575b517d7de58127ff35a}\label{classSistema_a8bd27b5bdc2575b517d7de58127ff35a}} 
+\mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}} {\bfseries o1}
+\item 
+\mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}} \mbox{\hyperlink{classSistema_ad901a7ef70fe69dc0d8713ddfc4bc258}{o2}}
+\item 
+double \mbox{\hyperlink{classSistema_ac47062484f1d45096fa4d80a9f5dff90}{k}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSistema_a67a9c4ff9773d54c5c433c28d227105d}\label{classSistema_a67a9c4ff9773d54c5c433c28d227105d}} 
+\index{Sistema@{Sistema}!Sistema@{Sistema}}
+\index{Sistema@{Sistema}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Sistema()}{Sistema()}}
+{\footnotesize\ttfamily Sistema\+::\+Sistema (\begin{DoxyParamCaption}\item[{double}]{mu1,  }\item[{double}]{w01,  }\item[{double}]{mu2,  }\item[{double}]{w02,  }\item[{double}]{k\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Constructor del sistema acoplado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu1} & Parámetro de no linealidad del oscilador 1. \\
+\hline
+{\em w01} & Frecuencia natural del oscilador 1. \\
+\hline
+{\em mu2} & Parámetro de no linealidad del oscilador 2. \\
+\hline
+{\em w02} & Frecuencia natural del oscilador 2. \\
+\hline
+{\em k\+\_\+} & Constante de acoplamiento entre ambos. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSistema_ab89ff3f5a358dbbad942cc3f0a227ca0}\label{classSistema_ab89ff3f5a358dbbad942cc3f0a227ca0}} 
+\index{Sistema@{Sistema}!simulate@{simulate}}
+\index{simulate@{simulate}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
+{\footnotesize\ttfamily void Sistema\+::simulate (\begin{DoxyParamCaption}\item[{double}]{t0,  }\item[{double}]{tf,  }\item[{double}]{dt,  }\item[{const std\+::string \&}]{outfile,  }\item[{double}]{x10 = {\ttfamily 0.0},  }\item[{double}]{v10 = {\ttfamily 0.0},  }\item[{double}]{x20 = {\ttfamily 0.0},  }\item[{double}]{v20 = {\ttfamily 0.0} }\end{DoxyParamCaption}) const}
+
+
+
+Simula la evolución temporal del sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t0} & Tiempo inicial. \\
+\hline
+{\em tf} & Tiempo final. \\
+\hline
+{\em dt} & Paso de integración. \\
+\hline
+{\em outfile} & Archivo de salida con los resultados. \\
+\hline
+{\em x10} & Posición inicial del oscilador 1. \\
+\hline
+{\em v10} & Velocidad inicial del oscilador 1. \\
+\hline
+{\em x20} & Posición inicial del oscilador 2. \\
+\hline
+{\em v20} & Velocidad inicial del oscilador 2. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSistema_ac47062484f1d45096fa4d80a9f5dff90}\label{classSistema_ac47062484f1d45096fa4d80a9f5dff90}} 
+\index{Sistema@{Sistema}!k@{k}}
+\index{k@{k}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily double Sistema\+::k}
+
+Constante de acoplamiento \mbox{\Hypertarget{classSistema_ad901a7ef70fe69dc0d8713ddfc4bc258}\label{classSistema_ad901a7ef70fe69dc0d8713ddfc4bc258}} 
+\index{Sistema@{Sistema}!o2@{o2}}
+\index{o2@{o2}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{o2}{o2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}} Sistema\+::o2}
+
+Osciladores individuales 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Sistema_8h}{Sistema.\+h}}\item 
+src/\mbox{\hyperlink{Sistema_8cpp}{Sistema.\+cpp}}\end{DoxyCompactItemize}

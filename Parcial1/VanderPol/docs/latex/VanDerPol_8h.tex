@@ -1,0 +1,47 @@
+\hypertarget{VanDerPol_8h}{}\doxysection{include/\+Van\+Der\+Pol.h File Reference}
+\label{VanDerPol_8h}\index{include/VanDerPol.h@{include/VanDerPol.h}}
+
+
+Clase que implementa un oscilador de Van der Pol.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{VanDerPol_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase que implementa un oscilador de Van der Pol. 
+
+Este archivo define la clase {\ttfamily \mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}}}, la cual modela un oscilador no lineal del tipo Van der Pol descrito por la ecuación diferencial\+: \[
+\frac{d^2x}{dt^2} - \mu (1 - x^2) \frac{dx}{dt} + \omega_0^2 x = F_\text{acople}
+\] donde\+:
+\begin{DoxyItemize}
+\item $\mu$ controla la no linealidad y el amortiguamiento.
+\item $\omega_0$ es la frecuencia natural.
+\item $F_\text{acople}$ representa una fuerza externa o de acoplamiento.
+\end{DoxyItemize}
+
+Esta clase se utiliza como componente base del sistema de osciladores acoplados.
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classSistema}{Sistema}} 
+\end{DoxySeeAlso}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Camila Pérez, Sergio Carasquilla 
+\end{DoxyAuthor}

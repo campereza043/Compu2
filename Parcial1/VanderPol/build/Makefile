@@ -175,17 +175,30 @@ vanderpol/fast:
 .PHONY : vanderpol/fast
 
 #=============================================================================
-# Target rules for targets named docs
+# Target rules for targets named documents
 
 # Build rule for target.
-docs: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 docs
-.PHONY : docs
+documents: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 documents
+.PHONY : documents
 
 # fast build rule for target.
-docs/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/docs.dir/build.make CMakeFiles/docs.dir/build
-.PHONY : docs/fast
+documents/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documents.dir/build.make CMakeFiles/documents.dir/build
+.PHONY : documents/fast
+
+#=============================================================================
+# Target rules for targets named clean_all
+
+# Build rule for target.
+clean_all: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean_all
+.PHONY : clean_all
+
+# fast build rule for target.
+clean_all/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean_all.dir/build.make CMakeFiles/clean_all.dir/build
+.PHONY : clean_all/fast
 
 src/Sistema.o: src/Sistema.cpp.o
 .PHONY : src/Sistema.o
@@ -271,7 +284,8 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... docs"
+	@echo "... clean_all"
+	@echo "... documents"
 	@echo "... vanderpol"
 	@echo "... src/Sistema.o"
 	@echo "... src/Sistema.i"

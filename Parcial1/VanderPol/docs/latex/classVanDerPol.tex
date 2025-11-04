@@ -1,0 +1,100 @@
+\hypertarget{classVanDerPol}{}\doxysection{Van\+Der\+Pol Class Reference}
+\label{classVanDerPol}\index{VanDerPol@{VanDerPol}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVanDerPol_a9d805379e124ce629e9c030f2180690d}{Van\+Der\+Pol}} (double mu\+\_\+=1.\+0, double w0\+\_\+=1.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVanDerPol_acbadb35fc77e8f32e335d7c3dedca757}{derivatives}} (double x, double v, double F\+\_\+couple, double \&dxdt, double \&dvdt) const
+\begin{DoxyCompactList}\small\item\em Calcula las derivadas del oscilador de Van der Pol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classVanDerPol_a8403dd2666ff9df195b1effeafe8692c}{mu}}
+\item 
+double \mbox{\hyperlink{classVanDerPol_ab93a727aca651c5f255ed79e52c34134}{w0}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVanDerPol_a9d805379e124ce629e9c030f2180690d}\label{classVanDerPol_a9d805379e124ce629e9c030f2180690d}} 
+\index{VanDerPol@{VanDerPol}!VanDerPol@{VanDerPol}}
+\index{VanDerPol@{VanDerPol}!VanDerPol@{VanDerPol}}
+\doxysubsubsection{\texorpdfstring{VanDerPol()}{VanDerPol()}}
+{\footnotesize\ttfamily Van\+Der\+Pol\+::\+Van\+Der\+Pol (\begin{DoxyParamCaption}\item[{double}]{mu\+\_\+ = {\ttfamily 1.0},  }\item[{double}]{w0\+\_\+ = {\ttfamily 1.0} }\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \mbox{\hyperlink{classVanDerPol}{Van\+Der\+Pol}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu\+\_\+} & Valor del parámetro de no linealidad μ. \\
+\hline
+{\em w0\+\_\+} & Frecuencia natural ω₀ del oscilador. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVanDerPol_acbadb35fc77e8f32e335d7c3dedca757}\label{classVanDerPol_acbadb35fc77e8f32e335d7c3dedca757}} 
+\index{VanDerPol@{VanDerPol}!derivatives@{derivatives}}
+\index{derivatives@{derivatives}!VanDerPol@{VanDerPol}}
+\doxysubsubsection{\texorpdfstring{derivatives()}{derivatives()}}
+{\footnotesize\ttfamily void Van\+Der\+Pol\+::derivatives (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{v,  }\item[{double}]{F\+\_\+couple,  }\item[{double \&}]{dxdt,  }\item[{double \&}]{dvdt }\end{DoxyParamCaption}) const}
+
+
+
+Calcula las derivadas del oscilador de Van der Pol. 
+
+Calcula las derivadas del sistema de Van der Pol.
+
+Evalúa el sistema de ecuaciones de primer orden equivalente\+: \[
+\begin{cases}
+\dot{x} = v, \\
+\dot{v} = \mu(1 - x^2)v - \omega_0^2 x + F_\text{acople}.
+\end{cases}
+\] 
+\begin{DoxyParams}{Parameters}
+{\em x} & Posición actual del oscilador. \\
+\hline
+{\em v} & Velocidad actual del oscilador. \\
+\hline
+{\em F\+\_\+couple} & Fuerza de acoplamiento aplicada. \\
+\hline
+{\em dxdt} & Salida\+: derivada de x respecto al tiempo. \\
+\hline
+{\em dvdt} & Salida\+: derivada de v respecto al tiempo.\\
+\hline
+{\em x} & Posición. \\
+\hline
+{\em v} & Velocidad. \\
+\hline
+{\em F\+\_\+couple} & Fuerza de acoplamiento. \\
+\hline
+{\em dxdt} & Referencia donde se almacena dx/dt. \\
+\hline
+{\em dvdt} & Referencia donde se almacena dv/dt. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classVanDerPol_a8403dd2666ff9df195b1effeafe8692c}\label{classVanDerPol_a8403dd2666ff9df195b1effeafe8692c}} 
+\index{VanDerPol@{VanDerPol}!mu@{mu}}
+\index{mu@{mu}!VanDerPol@{VanDerPol}}
+\doxysubsubsection{\texorpdfstring{mu}{mu}}
+{\footnotesize\ttfamily double Van\+Der\+Pol\+::mu}
+
+Parámetro de no linealidad \mbox{\Hypertarget{classVanDerPol_ab93a727aca651c5f255ed79e52c34134}\label{classVanDerPol_ab93a727aca651c5f255ed79e52c34134}} 
+\index{VanDerPol@{VanDerPol}!w0@{w0}}
+\index{w0@{w0}!VanDerPol@{VanDerPol}}
+\doxysubsubsection{\texorpdfstring{w0}{w0}}
+{\footnotesize\ttfamily double Van\+Der\+Pol\+::w0}
+
+Frecuencia natural 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{VanDerPol_8h}{Van\+Der\+Pol.\+h}}\item 
+src/\mbox{\hyperlink{VanDerPol_8cpp}{Van\+Der\+Pol.\+cpp}}\end{DoxyCompactItemize}

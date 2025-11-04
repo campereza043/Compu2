@@ -22,19 +22,19 @@ def main():
         data_file = RESULTS_DIR / "datos.txt"
 
     if not data_file.exists():
-        print(f"❌ Error: Archivo no encontrado: {data_file}")
+        print(f" Error: Archivo no encontrado: {data_file}")
         print("   Ejecute primero el programa C++ para generar los datos.")
         return 1
 
-    print(f"📊 Procesando: {data_file}")
+    print(f" Procesando: {data_file}")
 
     try:
         data = np.loadtxt(data_file)
         if data.size == 0:
-            print("❌ Error: Archivo vacío")
+            print(" Error: Archivo vacío")
             return 1
     except Exception as e:
-        print(f"❌ Error leyendo archivo: {e}")
+        print(f" Error leyendo archivo: {e}")
         return 1
 
     t, x1, v1, x2, v2 = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
@@ -184,20 +184,8 @@ def main():
                 plt.savefig(RESULTS_DIR / 'poincare_t_vs_x2.png', dpi=150, bbox_inches='tight')
                 plt.close()
 
-                # Histograma de x2 en Poincaré
-                if len(pdata) > 10:
-                    n_bins = min(30, len(pdata) // 5)
-                    plt.figure(figsize=(8, 6))
-                    plt.hist(pdata[:, 3], bins=n_bins, alpha=0.7, color='blue', density=True)
-                    plt.xlabel('x2')
-                    plt.ylabel('Densidad')
-                    plt.title('Distribución de x2 en Poincaré')
-                    plt.grid(True, alpha=0.3)
-                    plt.tight_layout()
-                    plt.savefig(RESULTS_DIR / 'poincare_histogram.png', dpi=150, bbox_inches='tight')
-                    plt.close()
         except Exception as e:
-            print(f"   ⚠️  Error procesando Poincaré: {e}")
+            print(f"     Error procesando Poincaré: {e}")
 
     # 9. Análisis de Lyapunov (si existe)
     lyap_prog_file = RESULTS_DIR / "lyapunov_progress.txt"
@@ -229,7 +217,7 @@ def main():
                 plt.savefig(RESULTS_DIR / 'lyapunov_evolution.png', dpi=150, bbox_inches='tight')
                 plt.close()
         except Exception as e:
-            print(f"   ⚠️  Error procesando Lyapunov: {e}")
+            print(f"     Error procesando Lyapunov: {e}")
 
     # 10. Leer y mostrar resultado final de Lyapunov
     if lyap_final_file.exists():
@@ -239,49 +227,21 @@ def main():
             
             if lines:
                 lyap_final = float(lines[-1])
-                print(f"\n📈 RESULTADO LYAPUNOV:")
+                print(f"\n RESULTADO LYAPUNOV:")
                 print(f"   Exponente de Lyapunov final: {lyap_final:.6f}")
                 if lyap_final > 0.001:
-                    print("   🌀 SISTEMA CAÓTICO (λ > 0)")
+                    print("    SISTEMA CAÓTICO (λ > 0)")
                 elif lyap_final < -0.001:
-                    print("   🔒 SISTEMA ESTABLE (λ < 0)")
+                    print("    SISTEMA ESTABLE (λ < 0)")
                 else:
-                    print("   ⚖️  SISTEMA EN BORDE DE ESTABILIDAD (λ ≈ 0)")
+                    print("     SISTEMA EN BORDE DE ESTABILIDAD (λ ≈ 0)")
         except Exception as e:
-            print(f"   ⚠️  Error leyendo Lyapunov final: {e}")
+            print(f"     Error leyendo Lyapunov final: {e}")
 
-    # 11. Validación de dt (si existe)
-    dt_validation_file = RESULTS_DIR / "dt_validation.txt"
-    if dt_validation_file.exists():
-        print("   Generando gráfica de validación de dt...")
-        try:
-            dt_data = np.loadtxt(dt_validation_file, comments='#')
-            if dt_data.size > 0:
-                if dt_data.ndim == 1:
-                    dt_data = dt_data.reshape(1, -1)
-                
-                # Gráfica de error vs dt
-                plt.figure(figsize=(10, 6))
-                dt_values = dt_data[:-2, 0]  # Los primeros valores son dt
-                errors_x1 = dt_data[:-2, 1]  # Errores en x1
-                errors_x2 = dt_data[:-2, 2]  # Errores en x2
-                
-                plt.loglog(dt_values, errors_x1, 'o-', label='Error x1', linewidth=2)
-                plt.loglog(dt_values, errors_x2, 's-', label='Error x2', linewidth=2)
-                plt.xlabel('Paso de tiempo (dt)')
-                plt.ylabel('Error absoluto')
-                plt.title('Convergencia del Paso de Tiempo')
-                plt.legend()
-                plt.grid(True, alpha=0.3, which='both')
-                plt.tight_layout()
-                plt.savefig(RESULTS_DIR / 'dt_convergence.png', dpi=150, bbox_inches='tight')
-                plt.close()
-        except Exception as e:
-            print(f"   ⚠️  Error procesando validación de dt: {e}")
 
     # 12. Generar GIFs si se solicita
     if '--gif' in sys.argv:
-        print("   🎬 Generando GIFs animados...")
+        print("    Generando GIFs animados...")
         animate_script = SCRIPTS_DIR / "animate_phase_spaces.py"
         if animate_script.exists():
             try:
@@ -290,15 +250,15 @@ def main():
                     str(data_file),
                     str(RESULTS_DIR)
                 ], check=True, cwd=PROJECT_ROOT)
-                print("   ✓ GIFs creados exitosamente")
+                print("   GIFs creados exitosamente")
             except subprocess.CalledProcessError as e:
-                print(f"   ❌ Error generando GIFs: {e}")
+                print(f"    Error generando GIFs: {e}")
             except FileNotFoundError:
-                print("   ❌ Python3 no encontrado")
+                print("    Python3 no encontrado")
         else:
-            print(f"   ❌ Script de animación no encontrado: {animate_script}")
+            print(f"    Script de animación no encontrado: {animate_script}")
 
-    print(f"\n✅ Análisis completado!")
+    print(f"\n Análisis completado!")
     print(f"   Gráficas guardadas en: {RESULTS_DIR}")
     
     # Mostrar archivos generados

@@ -1,0 +1,38 @@
+Manual técnico y de usuario Este proyecto simula y analiza un par de osciladores de Van der Pol acoplados linealmente. ~\newline
+ Permite explorar fenómenos de {\bfseries{sincronización, caos y bifurcaciones}}.\hypertarget{index_autotoc_md0}{}\doxysubsubsection{Compilación}\label{index_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir build \&\& cd build}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md1}{}\doxysubsubsection{Ejecución}\label{index_autotoc_md1}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./vanderpol -\/-\/auto}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md2}{}\doxysubsubsection{Opciones disponibles}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/-\/auto} Ejecuta todas las simulaciones y análisis.
+\item {\ttfamily -\/-\/validate\+\_\+dt} Prueba diferentes pasos de tiempo.
+\item {\ttfamily -\/-\/poincare} Genera el mapa de Poincaré.
+\item {\ttfamily -\/-\/lyapunov} Calcula el exponente de Lyapunov.
+\item {\ttfamily -\/-\/gif} Genera animaciones de las trayectorias.
+\item {\ttfamily -\/-\/interactive} Permite ingresar los parámetros manualmente.
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysubsubsection{Resultados}\label{index_autotoc_md3}
+Los resultados se almacenan en el directorio {\ttfamily results/}\+:
+\begin{DoxyItemize}
+\item {\ttfamily datos.\+txt}\+: simulación temporal.
+\item {\ttfamily poincare.\+txt}\+: puntos del mapa de Poincaré.
+\item {\ttfamily lyapunov\+\_\+final.\+txt}\+: valor del exponente de Lyapunov.
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Camila Pérez, Sergio Carasquilla 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

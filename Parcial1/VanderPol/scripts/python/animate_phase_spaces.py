@@ -69,7 +69,7 @@ def create_phase_space_gif(datafile, output_gif, x_data, y_data, x_label, y_labe
         plt.close()
         return True
     except Exception as e:
-        print(f"❌ Error guardando GIF {title}: {e}")
+        print(f" Error guardando GIF {title}: {e}")
         plt.close()
         return False
 
@@ -89,15 +89,15 @@ def main():
     try:
         data = np.loadtxt(datafile)
         if data.size == 0:
-            print("❌ Archivo vacío")
+            print(" Archivo vacío")
             return 1
     except Exception as e:
-        print(f"❌ Error leyendo archivo: {e}")
+        print(f" Error leyendo archivo: {e}")
         return 1
     
     t, x1, v1, x2, v2 = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
     
-    print(f"📊 Procesando {len(t)} puntos para GIFs de espacios de fase...")
+    print(f" Procesando {len(t)} puntos para GIFs de espacios de fase...")
     
     # Crear GIF para el espacio de fase del oscilador 1 (x1 vs v1)
     success1 = create_phase_space_gif(
@@ -127,10 +127,10 @@ def main():
     )
     
     if success1 and success2 and success3:
-        print("✅ Todos los GIFs de espacios de fase creados exitosamente")
+        print(" Todos los GIFs de espacios de fase creados exitosamente")
         return 0
     else:
-        print("⚠️ Algunos GIFs no se pudieron crear")
+        print(" Algunos GIFs no se pudieron crear")
         return 1
 
 if __name__ == "__main__":

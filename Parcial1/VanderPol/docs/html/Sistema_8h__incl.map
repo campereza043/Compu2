@@ -1,0 +1,6 @@
+<map id="include/Sistema.h" name="include/Sistema.h">
+<area shape="rect" id="node1" title="Sistema de dos osciladores de Van der Pol acoplados linealmente." alt="" coords="51,5,189,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,64,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,80,151,107"/>
+<area shape="rect" id="node4" href="$VanDerPol_8h.html" title="Clase que implementa un oscilador de Van der Pol." alt="" coords="176,80,277,107"/>
+</map>
