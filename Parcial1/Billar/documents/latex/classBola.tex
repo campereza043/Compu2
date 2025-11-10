@@ -1,0 +1,264 @@
+\hypertarget{classBola}{}\doxysection{Bola Class Reference}
+\label{classBola}\index{Bola@{Bola}}
+
+
+Representa una bola en una simulación de billar 2D.  
+
+
+
+
+{\ttfamily \#include $<$Bola.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBola_a2c72890a5147379786c8dd441229753f}{Bola}} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. Inicializa una bola en el origen con masa y radio por defecto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBola_a0cda35485f4347d1e4a68c6b4b440fd6}{Inicie}} (double x0, double y0, double vx0, double vy0, double m0, double r0)
+\begin{DoxyCompactList}\small\item\em Inicializa los parámetros físicos de la bola. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBola_ad66b44c605f26f46c3f88451c479f8eb}{Muevase}} (double dt)
+\begin{DoxyCompactList}\small\item\em Actualiza la posición de la bola usando integración simple. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBola_a593052a47503dd40e15603215b307825}{Resuelva\+Colision\+Paredes\+Simple}} (const \mbox{\hyperlink{classCaja}{Caja}} \&C)
+\begin{DoxyCompactList}\small\item\em Resuelve colisiones simples con las paredes de la caja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBola_a2fd6de1df92adc47882e7d9a32da0ec5}{Resuelva\+Colision\+Paredes\+Robusto}} (const \mbox{\hyperlink{classCaja}{Caja}} \&C)
+\begin{DoxyCompactList}\small\item\em Resuelve colisiones robustas con las paredes de la caja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBola_a596a66bfb30b0a4f536b0fe897934ea7}{Choque\+Elastico}} (\mbox{\hyperlink{classBola}{Bola}} \&otra)
+\begin{DoxyCompactList}\small\item\em Resuelve una colisión elástica con otra bola. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_ab7f4554b01d317e9a58cf26c5a53fbad}{Getx}} () const
+\begin{DoxyCompactList}\small\item\em Retorna la coordenada x. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_ac2be6b2367bc344ee4186764250bfb6c}{Gety}} () const
+\begin{DoxyCompactList}\small\item\em Retorna la coordenada y. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_a4667b8019585645fab564cd5643b3956}{Getvx}} () const
+\begin{DoxyCompactList}\small\item\em Retorna la componente vx. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_ac681c7556fda8884a19c653268f2d60a}{Getvy}} () const
+\begin{DoxyCompactList}\small\item\em Retorna la componente vy. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_a29641540a2e6c8d4733917cafcfdcefe}{Getm}} () const
+\begin{DoxyCompactList}\small\item\em Retorna la masa. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBola_a49de2b63d259fc6c6d89caed59effb00}{Getr}} () const
+\begin{DoxyCompactList}\small\item\em Retorna el radio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa una bola en una simulación de billar 2D. 
+
+Cada bola posee propiedades físicas básicas (posición, velocidad, masa y radio) y puede interactuar elásticamente con otras bolas y con las paredes de una caja. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBola_a2c72890a5147379786c8dd441229753f}\label{classBola_a2c72890a5147379786c8dd441229753f}} 
+\index{Bola@{Bola}!Bola@{Bola}}
+\index{Bola@{Bola}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Bola()}{Bola()}}
+{\footnotesize\ttfamily Bola\+::\+Bola (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. Inicializa una bola en el origen con masa y radio por defecto. 
+
+Constructor por defecto.
+
+Inicializa la bola en el origen con velocidad cero, masa unitaria y radio 0.\+1. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBola_a596a66bfb30b0a4f536b0fe897934ea7}\label{classBola_a596a66bfb30b0a4f536b0fe897934ea7}} 
+\index{Bola@{Bola}!ChoqueElastico@{ChoqueElastico}}
+\index{ChoqueElastico@{ChoqueElastico}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{ChoqueElastico()}{ChoqueElastico()}}
+{\footnotesize\ttfamily void Bola\+::\+Choque\+Elastico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBola}{Bola}} \&}]{otra }\end{DoxyParamCaption})}
+
+
+
+Resuelve una colisión elástica con otra bola. 
+
+Resuelve una colisión elástica entre dos bolas.
+
+Conserva el momento lineal y la energía cinética en el sistema de dos bolas. 
+\begin{DoxyParams}{Parameters}
+{\em otra} & Referencia a la otra bola.\\
+\hline
+\end{DoxyParams}
+Conserva el momento lineal y la energía cinética del sistema de dos bolas. Si las bolas se solapan, también realiza una corrección de posición para separarlas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Referencia a la otra bola con la que colisiona. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} Impulso escalar.\mbox{\Hypertarget{classBola_a29641540a2e6c8d4733917cafcfdcefe}\label{classBola_a29641540a2e6c8d4733917cafcfdcefe}} 
+\index{Bola@{Bola}!Getm@{Getm}}
+\index{Getm@{Getm}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Getm()}{Getm()}}
+{\footnotesize\ttfamily double Bola\+::\+Getm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la masa. 
+
+\mbox{\Hypertarget{classBola_a49de2b63d259fc6c6d89caed59effb00}\label{classBola_a49de2b63d259fc6c6d89caed59effb00}} 
+\index{Bola@{Bola}!Getr@{Getr}}
+\index{Getr@{Getr}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Getr()}{Getr()}}
+{\footnotesize\ttfamily double Bola\+::\+Getr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna el radio. 
+
+\mbox{\Hypertarget{classBola_a4667b8019585645fab564cd5643b3956}\label{classBola_a4667b8019585645fab564cd5643b3956}} 
+\index{Bola@{Bola}!Getvx@{Getvx}}
+\index{Getvx@{Getvx}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Getvx()}{Getvx()}}
+{\footnotesize\ttfamily double Bola\+::\+Getvx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la componente vx. 
+
+\mbox{\Hypertarget{classBola_ac681c7556fda8884a19c653268f2d60a}\label{classBola_ac681c7556fda8884a19c653268f2d60a}} 
+\index{Bola@{Bola}!Getvy@{Getvy}}
+\index{Getvy@{Getvy}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Getvy()}{Getvy()}}
+{\footnotesize\ttfamily double Bola\+::\+Getvy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la componente vy. 
+
+\mbox{\Hypertarget{classBola_ab7f4554b01d317e9a58cf26c5a53fbad}\label{classBola_ab7f4554b01d317e9a58cf26c5a53fbad}} 
+\index{Bola@{Bola}!Getx@{Getx}}
+\index{Getx@{Getx}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Getx()}{Getx()}}
+{\footnotesize\ttfamily double Bola\+::\+Getx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la coordenada x. 
+
+\mbox{\Hypertarget{classBola_ac2be6b2367bc344ee4186764250bfb6c}\label{classBola_ac2be6b2367bc344ee4186764250bfb6c}} 
+\index{Bola@{Bola}!Gety@{Gety}}
+\index{Gety@{Gety}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Gety()}{Gety()}}
+{\footnotesize\ttfamily double Bola\+::\+Gety (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna la coordenada y. 
+
+\mbox{\Hypertarget{classBola_a0cda35485f4347d1e4a68c6b4b440fd6}\label{classBola_a0cda35485f4347d1e4a68c6b4b440fd6}} 
+\index{Bola@{Bola}!Inicie@{Inicie}}
+\index{Inicie@{Inicie}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Inicie()}{Inicie()}}
+{\footnotesize\ttfamily void Bola\+::\+Inicie (\begin{DoxyParamCaption}\item[{double}]{x0,  }\item[{double}]{y0,  }\item[{double}]{vx0,  }\item[{double}]{vy0,  }\item[{double}]{m0,  }\item[{double}]{r0 }\end{DoxyParamCaption})}
+
+
+
+Inicializa los parámetros físicos de la bola. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x0} & Posición inicial en x. \\
+\hline
+{\em y0} & Posición inicial en y. \\
+\hline
+{\em vx0} & Velocidad inicial en x. \\
+\hline
+{\em vy0} & Velocidad inicial en y. \\
+\hline
+{\em m0} & Masa. \\
+\hline
+{\em r0} & Radio. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBola_ad66b44c605f26f46c3f88451c479f8eb}\label{classBola_ad66b44c605f26f46c3f88451c479f8eb}} 
+\index{Bola@{Bola}!Muevase@{Muevase}}
+\index{Muevase@{Muevase}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{Muevase()}{Muevase()}}
+{\footnotesize\ttfamily void Bola\+::\+Muevase (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+Actualiza la posición de la bola usando integración simple. 
+
+Avanza la posición de la bola según su velocidad.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Paso de tiempo.\\
+\hline
+\end{DoxyParams}
+Este método no considera colisiones; simplemente actualiza la posición usando el paso de tiempo {\ttfamily dt}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Paso de tiempo. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBola_a2fd6de1df92adc47882e7d9a32da0ec5}\label{classBola_a2fd6de1df92adc47882e7d9a32da0ec5}} 
+\index{Bola@{Bola}!ResuelvaColisionParedesRobusto@{ResuelvaColisionParedesRobusto}}
+\index{ResuelvaColisionParedesRobusto@{ResuelvaColisionParedesRobusto}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{ResuelvaColisionParedesRobusto()}{ResuelvaColisionParedesRobusto()}}
+{\footnotesize\ttfamily void Bola\+::\+Resuelva\+Colision\+Paredes\+Robusto (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCaja}{Caja}} \&}]{C }\end{DoxyParamCaption})}
+
+
+
+Resuelve colisiones robustas con las paredes de la caja. 
+
+Corrige tanto la posición como la velocidad para evitar que la bola atraviese las paredes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & \mbox{\hyperlink{classCaja}{Caja}} con la que colisiona.\\
+\hline
+\end{DoxyParams}
+Además de invertir la velocidad, este método ajusta la posición de la bola para evitar que atraviese las paredes, mejorando la estabilidad numérica de la simulación.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & \mbox{\hyperlink{classCaja}{Caja}} con la que colisiona. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} Corrige posición en x.Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBola_a2fd6de1df92adc47882e7d9a32da0ec5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBola_a593052a47503dd40e15603215b307825}\label{classBola_a593052a47503dd40e15603215b307825}} 
+\index{Bola@{Bola}!ResuelvaColisionParedesSimple@{ResuelvaColisionParedesSimple}}
+\index{ResuelvaColisionParedesSimple@{ResuelvaColisionParedesSimple}!Bola@{Bola}}
+\doxysubsubsection{\texorpdfstring{ResuelvaColisionParedesSimple()}{ResuelvaColisionParedesSimple()}}
+{\footnotesize\ttfamily void Bola\+::\+Resuelva\+Colision\+Paredes\+Simple (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCaja}{Caja}} \&}]{C }\end{DoxyParamCaption})}
+
+
+
+Resuelve colisiones simples con las paredes de la caja. 
+
+Invierte la velocidad al chocar con una pared, pero puede causar adherencia si el tiempo de integración es grande.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & \mbox{\hyperlink{classCaja}{Caja}} con la que colisiona.\\
+\hline
+\end{DoxyParams}
+Si la bola toca una pared y se mueve hacia ella, su velocidad se invierte. Este método no corrige la posición y puede causar “pegado” si el paso de tiempo es grande.
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & \mbox{\hyperlink{classCaja}{Caja}} con la que colisiona. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBola_a593052a47503dd40e15603215b307825_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Bola_8h}{Bola.\+h}}\item 
+\mbox{\hyperlink{Bola_8cpp}{Bola.\+cpp}}\end{DoxyCompactItemize}

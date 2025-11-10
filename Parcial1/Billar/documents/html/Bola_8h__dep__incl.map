@@ -1,0 +1,6 @@
+<map id="Bola.h" name="Bola.h">
+<area shape="rect" id="node1" title="Define la clase Bola que representa una partícula (bola) en el sistema de billar." alt="" coords="67,5,129,32"/>
+<area shape="rect" id="node2" href="$Bola_8cpp.html" title="Implementación de los métodos de la clase Bola." alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node3" href="$Sistema_8h.html" title="Define la clase Sistema, que representa el conjunto de bolas y la caja donde se realiza la simulación..." alt="" coords="108,80,195,107"/>
+<area shape="rect" id="node4" href="$Sistema_8cpp.html" title="Implementación de la clase Sistema, que coordina la simulación del billar." alt="" coords="100,155,203,181"/>
+</map>

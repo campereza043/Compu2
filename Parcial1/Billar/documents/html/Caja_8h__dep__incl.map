@@ -1,0 +1,8 @@
+<map id="Caja.h" name="Caja.h">
+<area shape="rect" id="node1" title="Define la clase Caja que representa el contenedor rectangular del sistema de billar." alt="" coords="120,5,183,32"/>
+<area shape="rect" id="node2" href="$Bola_8h.html" title="Define la clase Bola que representa una partícula (bola) en el sistema de billar." alt="" coords="51,80,113,107"/>
+<area shape="rect" id="node4" href="$Sistema_8h.html" title="Define la clase Sistema, que representa el conjunto de bolas y la caja donde se realiza la simulación..." alt="" coords="108,155,195,181"/>
+<area shape="rect" id="node6" href="$Caja_8cpp.html" title="Implementación de la clase Caja." alt="" coords="189,80,268,107"/>
+<area shape="rect" id="node3" href="$Bola_8cpp.html" title="Implementación de los métodos de la clase Bola." alt="" coords="5,155,84,181"/>
+<area shape="rect" id="node5" href="$Sistema_8cpp.html" title="Implementación de la clase Sistema, que coordina la simulación del billar." alt="" coords="100,229,203,256"/>
+</map>

@@ -1,0 +1,42 @@
+\hypertarget{Bola_8h_source}{}\doxysection{Bola.\+h}
+\label{Bola_8h_source}\index{Bola.h@{Bola.h}}
+\mbox{\hyperlink{Bola_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef BOLA\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define BOLA\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Caja_8h}{Caja.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classBola}{Bola}} \{}
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{double} x, y;   }
+\DoxyCodeLine{24     \textcolor{keywordtype}{double} vx, vy; }
+\DoxyCodeLine{25     \textcolor{keywordtype}{double} m;      }
+\DoxyCodeLine{26     \textcolor{keywordtype}{double} r;      }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30     \mbox{\hyperlink{classBola_a2c72890a5147379786c8dd441229753f}{Bola}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBola_a0cda35485f4347d1e4a68c6b4b440fd6}{Inicie}}(\textcolor{keywordtype}{double} x0, \textcolor{keywordtype}{double} y0, \textcolor{keywordtype}{double} vx0, \textcolor{keywordtype}{double} vy0, \textcolor{keywordtype}{double} m0, \textcolor{keywordtype}{double} r0);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBola_ad66b44c605f26f46c3f88451c479f8eb}{Muevase}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBola_a593052a47503dd40e15603215b307825}{ResuelvaColisionParedesSimple}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCaja}{Caja}}\& C);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBola_a2fd6de1df92adc47882e7d9a32da0ec5}{ResuelvaColisionParedesRobusto}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCaja}{Caja}}\& C);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBola_a596a66bfb30b0a4f536b0fe897934ea7}{ChoqueElastico}}(\mbox{\hyperlink{classBola}{Bola}}\& otra);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{comment}{// ===== Getters =====}}
+\DoxyCodeLine{77     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_ab7f4554b01d317e9a58cf26c5a53fbad}{Getx}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} x; \} }
+\DoxyCodeLine{78     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_ac2be6b2367bc344ee4186764250bfb6c}{Gety}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} y; \} }
+\DoxyCodeLine{79     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_a4667b8019585645fab564cd5643b3956}{Getvx}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} vx; \} }
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_ac681c7556fda8884a19c653268f2d60a}{Getvy}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} vy; \} }
+\DoxyCodeLine{81     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_a29641540a2e6c8d4733917cafcfdcefe}{Getm}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} m; \} }
+\DoxyCodeLine{82     \textcolor{keywordtype}{double} \mbox{\hyperlink{classBola_a49de2b63d259fc6c6d89caed59effb00}{Getr}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} r; \} }
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -129,6 +129,32 @@ simulacion/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulacion.dir/build.make CMakeFiles/simulacion.dir/build
 .PHONY : simulacion/fast
 
+#=============================================================================
+# Target rules for targets named documents
+
+# Build rule for target.
+documents: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 documents
+.PHONY : documents
+
+# fast build rule for target.
+documents/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/documents.dir/build.make CMakeFiles/documents.dir/build
+.PHONY : documents/fast
+
+#=============================================================================
+# Target rules for targets named clean_all
+
+# Build rule for target.
+clean_all: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean_all
+.PHONY : clean_all
+
+# fast build rule for target.
+clean_all/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean_all.dir/build.make CMakeFiles/clean_all.dir/build
+.PHONY : clean_all/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -233,6 +259,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... clean_all"
+	@echo "... documents"
 	@echo "... simulacion"
 	@echo "... main.o"
 	@echo "... main.i"

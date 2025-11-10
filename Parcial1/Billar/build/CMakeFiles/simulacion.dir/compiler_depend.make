@@ -215,6 +215,30 @@ CMakeFiles/simulacion.dir/main.cpp.o: /home/debian12/Documentos/UD/Compu2/Parcia
   /usr/include/c++/12/ext/aligned_buffer.h \
   /usr/include/c++/12/bits/fs_dir.h \
   /usr/include/c++/12/bits/fs_ops.h \
+  /usr/include/c++/12/cmath \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/c++/12/bits/specfun.h \
+  /usr/include/c++/12/tr1/gamma.tcc \
+  /usr/include/c++/12/tr1/special_function_util.h \
+  /usr/include/c++/12/tr1/bessel_function.tcc \
+  /usr/include/c++/12/tr1/beta_function.tcc \
+  /usr/include/c++/12/tr1/ell_integral.tcc \
+  /usr/include/c++/12/tr1/exp_integral.tcc \
+  /usr/include/c++/12/tr1/hypergeometric.tcc \
+  /usr/include/c++/12/tr1/legendre_function.tcc \
+  /usr/include/c++/12/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/12/tr1/poly_hermite.tcc \
+  /usr/include/c++/12/tr1/poly_laguerre.tcc \
+  /usr/include/c++/12/tr1/riemann_zeta.tcc \
   /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Sistema.h \
   /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Caja.h \
   /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Bola.h \
@@ -567,6 +591,22 @@ CMakeFiles/simulacion.dir/src/Sistema.cpp.o: /home/debian12/Documentos/UD/Compu2
 
 /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/src/Caja.cpp:
 
+/usr/include/c++/12/bits/fstream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/12/bits/c++io.h:
+
+/usr/include/c++/12/bits/stl_bvector.h:
+
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/src/Bola.cpp:
+
+/usr/include/c++/12/bits/stl_vector.h:
+
+/usr/include/c++/12/bits/stl_uninitialized.h:
+
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Caja.h:
+
+/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Sistema.h:
+
 /usr/include/c++/12/tr1/riemann_zeta.tcc:
 
 /usr/include/c++/12/tr1/modified_bessel_func.tcc:
@@ -587,29 +627,13 @@ CMakeFiles/simulacion.dir/src/Sistema.cpp.o: /home/debian12/Documentos/UD/Compu2
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/c++/12/bits/fstream.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/12/bits/c++io.h:
+/usr/include/c++/12/fstream:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
-/usr/include/c++/12/fstream:
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/usr/include/c++/12/bits/stl_bvector.h:
-
-/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/src/Bola.cpp:
-
-/usr/include/c++/12/bits/stl_vector.h:
-
-/usr/include/c++/12/bits/stl_uninitialized.h:
-
-/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Caja.h:
-
-/home/debian12/Documentos/UD/Compu2/Parcial1/Billar/include/Sistema.h:
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/c++/12/ext/aligned_buffer.h:
 

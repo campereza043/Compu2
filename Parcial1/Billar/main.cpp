@@ -11,7 +11,25 @@
 #include <filesystem>
 #include <string>
 #include <stdexcept>
+#include <cmath>
 #include "Sistema.h"
+
+/**
+ * @brief Calcula la capacidad máxima de bolas en la caja
+ * @param W Ancho de la caja
+ * @param H Alto de la caja
+ * @param r Radio de cada bola
+ * @return Número máximo de bolas que caben en la caja
+ */
+int CalcularCapacidadMaxima(double W, double H, double r) {
+    // Calcula cuántas bolas caben en una disposición de rejilla hexagonal
+    // que es más eficiente que la cuadrada
+    double diametro = 2 * r;
+    int columnas = std::max(1, static_cast<int>((W - r) / diametro));
+    int filas = std::max(1, static_cast<int>((H - r) / (diametro * std::sqrt(3) / 2)));
+    
+    return columnas * filas;
+}
 
 /**
  * @brief Función principal.
@@ -27,7 +45,7 @@ int main() {
     const double dt_frame = 0.01; ///< Intervalo entre registros de salida.
     const double m = 1.0; ///< Masa de cada bola.
     const double r = 0.2; ///< Radio de cada bola.
-    const double vmax = 1.0; ///< Velocidad máxima inicial.
+    const double vmax = 4.0; ///< Velocidad máxima inicial.
     double tf, W, H;
     int N;
     std::string integrador_nombre;
@@ -41,6 +59,25 @@ int main() {
     std::cin >> W;
     std::cout << "Ingrese el alto de la caja: ";
     std::cin >> H;
+    
+    // --- Validación de capacidad ---
+    int capacidad_maxima = CalcularCapacidadMaxima(W, H, r);
+    if (N > capacidad_maxima) {
+        std::cerr << "\n  ADVERTENCIA: Demasiadas bolas para la caja!" << std::endl;
+        std::cerr << "La caja de " << W << "x" << H << " con bolas de radio " << r 
+                  << " puede contener como máximo " << capacidad_maxima << " bolas." << std::endl;
+        std::cerr << "Has solicitado " << N << " bolas." << std::endl;
+        std::cerr << "¿Deseas continuar de todos modos? (s/n): ";
+        
+        char respuesta;
+        std::cin >> respuesta;
+        if (respuesta != 's' && respuesta != 'S') {
+            std::cout << "Simulación cancelada. Reduce el número de bolas o aumenta el tamaño de la caja." << std::endl;
+            return 1;
+        }
+        std::cout << "Continuando con configuración sobrepoblada..." << std::endl;
+    }
+    
     std::cout << "Elija el integrador (euler/verlet): ";
     std::cin >> integrador_nombre;
 
@@ -63,9 +100,13 @@ int main() {
     archivo << "# W: " << W << "\n";
     archivo << "# H: " << H << "\n";
     archivo << "# R_BOLA: " << r << "\n";
+    archivo << "# N_BOLAS: " << N << "\n";
+    archivo << "# CAPACIDAD_MAXIMA_RECOMENDADA: " << capacidad_maxima << "\n";
 
     std::cout << "Iniciando simulacion con el integrador '" 
               << integrador_nombre << "'..." << std::endl;
+    std::cout << "Configuración: " << N << " bolas en caja " << W << "x" << H 
+              << " (capacidad recomendada: " << capacidad_maxima << ")" << std::endl;
 
     // --- Bucle principal de simulación ---
     double t = 0;

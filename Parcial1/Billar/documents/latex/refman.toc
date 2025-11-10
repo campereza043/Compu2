@@ -1,0 +1,59 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Bola Class Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{6}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Constructor \& Destructor Documentation}{6}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}Bola()}{6}{subsubsection.3.1.2.1}%
+\contentsline {subsection}{\numberline {3.1.3}Member Function Documentation}{6}{subsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}ChoqueElastico()}{6}{subsubsection.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}Getm()}{7}{subsubsection.3.1.3.2}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}Getr()}{7}{subsubsection.3.1.3.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.4}Getvx()}{7}{subsubsection.3.1.3.4}%
+\contentsline {subsubsection}{\numberline {3.1.3.5}Getvy()}{7}{subsubsection.3.1.3.5}%
+\contentsline {subsubsection}{\numberline {3.1.3.6}Getx()}{7}{subsubsection.3.1.3.6}%
+\contentsline {subsubsection}{\numberline {3.1.3.7}Gety()}{7}{subsubsection.3.1.3.7}%
+\contentsline {subsubsection}{\numberline {3.1.3.8}Inicie()}{7}{subsubsection.3.1.3.8}%
+\contentsline {subsubsection}{\numberline {3.1.3.9}Muevase()}{8}{subsubsection.3.1.3.9}%
+\contentsline {subsubsection}{\numberline {3.1.3.10}ResuelvaColisionParedesRobusto()}{8}{subsubsection.3.1.3.10}%
+\contentsline {subsubsection}{\numberline {3.1.3.11}ResuelvaColisionParedesSimple()}{9}{subsubsection.3.1.3.11}%
+\contentsline {section}{\numberline {3.2}Caja Class Reference}{10}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{10}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Constructor \& Destructor Documentation}{10}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Caja()}{11}{subsubsection.3.2.2.1}%
+\contentsline {subsection}{\numberline {3.2.3}Member Function Documentation}{11}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}Defina()}{11}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}GetH()}{11}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}GetW()}{12}{subsubsection.3.2.3.3}%
+\contentsline {section}{\numberline {3.3}Sistema Class Reference}{13}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{13}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Member Function Documentation}{13}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}DefinaCaja()}{13}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}Encabezado()}{14}{subsubsection.3.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.3}Guarde()}{14}{subsubsection.3.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.3.2.4}InicialiceRejilla()}{14}{subsubsection.3.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.3.2.5}Paso()}{15}{subsubsection.3.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.3.2.6}Reserve()}{16}{subsubsection.3.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.3.2.7}SeleccioneIntegrador()}{16}{subsubsection.3.3.2.7}%
+\contentsline {chapter}{\numberline {4}File Documentation}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Bola.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{17}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{18}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Bola.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{18}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Caja.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{18}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{19}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Caja.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Sistema.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h File Reference}{20}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Detailed Description}{21}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Enumeration Type Documentation}{21}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}Integrador}{21}{subsubsection.4.5.2.1}%
+\contentsline {section}{\numberline {4.6}Sistema.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{21}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Bola.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{22}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Detailed Description}{22}{subsection.4.7.1}%
+\contentsline {section}{\numberline {4.8}Caja.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{22}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Detailed Description}{23}{subsection.4.8.1}%
+\contentsline {section}{\numberline {4.9}Sistema.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp File Reference}{23}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Detailed Description}{24}{subsection.4.9.1}%
+\contentsline {chapter}{Index}{25}{section*.23}%
