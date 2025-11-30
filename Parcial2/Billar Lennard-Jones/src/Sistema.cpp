@@ -1,6 +1,6 @@
 /**
  * @file Sistema.cpp
- * @brief Implementación de Dinámica Molecular (LJ + Velocity Verlet).
+ * @brief Implementación de Dinámica Molecular (Salida formato .dat con tabs).
  */
 #define _USE_MATH_DEFINES
 #include "Sistema.h"
@@ -27,7 +27,7 @@ void Sistema::Reserve(int N) {
 void Sistema::InicialiceRejilla(double m, double r, double vmax) {
     int N = bolas.size();
     if (N == 0) return;
-    srand(1); // Semilla fija para reproducibilidad
+    srand(1); 
 
     double W = caja.GetW();
     double H = caja.GetH();
@@ -35,7 +35,6 @@ void Sistema::InicialiceRejilla(double m, double r, double vmax) {
     int cols = static_cast<int>(std::sqrt(N * W / H));
     int rows = (N + cols - 1) / cols; 
     
-    // Distanciamiento para evitar explosión inicial por LJ
     double dx = W / (cols + 1);
     double dy = H / (rows + 1);
 
@@ -46,21 +45,17 @@ void Sistema::InicialiceRejilla(double m, double r, double vmax) {
         double x0 = (col + 1) * dx;
         double y0 = (row + 1) * dy;
         
-        // Velocidades aleatorias
         double theta = 2.0 * M_PI * ((double)rand() / RAND_MAX);
         double v = vmax * ((double)rand() / RAND_MAX);
         
         bolas[i].Inicie(x0, y0, v*cos(theta), v*sin(theta), m, r);
     }
-    // Calcular fuerzas iniciales para el primer paso de Verlet
     CalculeFuerzas();
 }
 
 void Sistema::CalculeFuerzas() {
-    // 1. Resetear fuerzas de todas las partículas
     for (auto& b : bolas) b.ResetFuerza();
 
-    // 2. Interacción Lennard-Jones (Pares) [cite: 24, 25]
     int N = bolas.size();
     for (int i = 0; i < N; ++i) {
         for (int j = i + 1; j < N; ++j) {
@@ -68,50 +63,36 @@ void Sistema::CalculeFuerzas() {
             double dy = bolas[j].Gety() - bolas[i].Gety();
             double r2 = dx*dx + dy*dy;
             
-            // Evitar singularidad numérica y optimización de cutoff (opcional)
             if (r2 < 1e-4) r2 = 1e-4; 
             
             double r = std::sqrt(r2);
-            
-            // Cálculo optimizado de LJ
-            // F_mag = (24*eps/r) * [ 2*(sigma/r)^12 - (sigma/r)^6 ]
-            // F_vec = F_mag * (vec_r / r) = (F_mag / r) * vec_r
-            
             double s_r = sigma / r;
-            double s_r_6 = s_r * s_r * s_r * s_r * s_r * s_r; // (sigma/r)^6
-            double s_r_12 = s_r_6 * s_r_6;                    // (sigma/r)^12
+            double s_r_6 = s_r * s_r * s_r * s_r * s_r * s_r; 
+            double s_r_12 = s_r_6 * s_r_6;                    
             
-            // Magnitud de la fuerza escalar dividida por r (para vectorizar)
             double F_over_r = (24.0 * epsilon / r2) * (2.0 * s_r_12 - s_r_6);
             
             double Fx = F_over_r * dx;
             double Fy = F_over_r * dy;
 
-            // Tercera ley de Newton: F_ji = -F_ij
-            bolas[i].AgregueFuerza(-Fx, -Fy); // Atrae o repele a i
-            bolas[j].AgregueFuerza(Fx, Fy);   // Atrae o repele a j
+            bolas[i].AgregueFuerza(-Fx, -Fy); 
+            bolas[j].AgregueFuerza(Fx, Fy);   
         }
     }
 }
 
-// Implementación de Velocity-Verlet 
 void Sistema::PasoVelocityVerlet(double dt) {
-    // 1. Primer medio paso de velocidad: v(t + dt/2) = v(t) + 0.5*a(t)*dt
     for (auto& b : bolas) {
         b.Mueva_v(0.5 * dt); 
     }
 
-    // 2. Paso completo de posición: r(t + dt) = r(t) + v(t + dt/2)*dt
     for (auto& b : bolas) {
         b.Mueva_r(dt);
-        // Verificar condiciones de frontera inmediatamente al mover
         b.ResuelvaColisionParedesRobusto(caja); 
     }
 
-    // 3. Calcular fuerzas nuevas: a(t + dt)
     CalculeFuerzas();
 
-    // 4. Segundo medio paso de velocidad: v(t + dt) = v(t + dt/2) + 0.5*a(t + dt)*dt
     for (auto& b : bolas) {
         b.Mueva_v(0.5 * dt);
     }
@@ -121,18 +102,20 @@ void Sistema::Paso(double dt) {
     PasoVelocityVerlet(dt);
 }
 
+// MODIFICADO: Uso de \t para separar columnas (.dat style)
 void Sistema::Encabezado(std::ofstream& f) {
     f << "t";
     for(size_t i=0; i<bolas.size(); ++i) 
-        f << ",x" << i << ",y" << i << ",vx" << i << ",vy" << i;
+        f << "\tx" << i << "\ty" << i << "\tvx" << i << "\tvy" << i;
     f << "\n";
 }
 
+// MODIFICADO: Uso de \t para separar datos
 void Sistema::Guarde(std::ofstream& f, double t) {
     f << t;
     for (const auto& b : bolas) {
-        f << "," << b.Getx() << "," << b.Gety() 
-          << "," << b.Getvx() << "," << b.Getvy();
+        f << "\t" << b.Getx() << "\t" << b.Gety() 
+          << "\t" << b.Getvx() << "\t" << b.Getvy();
     }
     f << "\n";
 }
