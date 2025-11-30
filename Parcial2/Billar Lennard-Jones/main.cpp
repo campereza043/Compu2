@@ -33,7 +33,7 @@ int main() {
     // Parámetros Físicos Fijos (o podrían pedirse también)
     const double dt = 0.001;     
     const double m = 1.0;
-    const double r_viz = 0.5;    
+    const double r_viz = 0.2;    
     const double eps = 1.0;      
     const double sigma = 1.0;    
     const double vmax = 2.0;
@@ -62,7 +62,7 @@ int main() {
 
     double t = 0;
     int frame = 0;
-    int pasos_por_frame = 10; 
+    int pasos_por_frame = 100; 
 
     // --- 4. Bucle Principal ---
     while (t < tf) {
@@ -87,7 +87,7 @@ int main() {
     // Se pasan W y H como argumentos para que Python ajuste los ejes.
     std::cout << "Ejecutando script de visualizacion..." << std::endl;
     
-    std::string command = "python3 ../graficar.py " + std::to_string(W) + " " + std::to_string(H);
+    std::string command = "python3 ../scripts/graficar.py " + std::to_string(W) + " " + std::to_string(H);
     
     // Si estás en Windows y python3 no funciona, intenta con "python"
     // std::string command = "python ../graficar.py " + std::to_string(W) + " " + std::to_string(H);

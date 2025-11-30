@@ -90,54 +90,44 @@ $(document).ready(function(){initNavTree('classBola.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 
-<p>Representa una bola en una simulación de billar 2D.  
- <a href="classBola.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="Bola_8h_source.html">Bola.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c72890a5147379786c8dd441229753f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a2c72890a5147379786c8dd441229753f">Bola</a> ()</td></tr>
-<tr class="memdesc:a2c72890a5147379786c8dd441229753f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor por defecto. Inicializa una bola en el origen con masa y radio por defecto.  <a href="classBola.html#a2c72890a5147379786c8dd441229753f">More...</a><br /></td></tr>
 <tr class="separator:a2c72890a5147379786c8dd441229753f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cda35485f4347d1e4a68c6b4b440fd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a0cda35485f4347d1e4a68c6b4b440fd6">Inicie</a> (double x0, double y0, double vx0, double vy0, double m0, double r0)</td></tr>
-<tr class="memdesc:a0cda35485f4347d1e4a68c6b4b440fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa los parámetros físicos de la bola.  <a href="classBola.html#a0cda35485f4347d1e4a68c6b4b440fd6">More...</a><br /></td></tr>
 <tr class="separator:a0cda35485f4347d1e4a68c6b4b440fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad66b44c605f26f46c3f88451c479f8eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#ad66b44c605f26f46c3f88451c479f8eb">Muevase</a> (double dt)</td></tr>
-<tr class="memdesc:ad66b44c605f26f46c3f88451c479f8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza la posición de la bola usando integración simple.  <a href="classBola.html#ad66b44c605f26f46c3f88451c479f8eb">More...</a><br /></td></tr>
-<tr class="separator:ad66b44c605f26f46c3f88451c479f8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a593052a47503dd40e15603215b307825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a593052a47503dd40e15603215b307825">ResuelvaColisionParedesSimple</a> (const <a class="el" href="classCaja.html">Caja</a> &amp;C)</td></tr>
-<tr class="memdesc:a593052a47503dd40e15603215b307825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resuelve colisiones simples con las paredes de la caja.  <a href="classBola.html#a593052a47503dd40e15603215b307825">More...</a><br /></td></tr>
-<tr class="separator:a593052a47503dd40e15603215b307825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51d39dcee456d907853beedc8ead5d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#ac51d39dcee456d907853beedc8ead5d3">Mueva_r</a> (double dt)</td></tr>
+<tr class="memdesc:ac51d39dcee456d907853beedc8ead5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza la posición (Paso 1 de Velocity-Verlet). r(t+dt) = r(t) + v(t)dt + 0.5*a(t)dt^2 Pero en Velocity Verlet estándar se suele hacer: r += v * dt + 0.5 * a * dt^2 O el esquema: v(1/2) = v + 0.5*a*dt; r(new) = r + v(1/2)*dt. Aquí usaremos métodos granulares para que <a class="el" href="classSistema.html">Sistema</a> controle el orden.  <a href="classBola.html#ac51d39dcee456d907853beedc8ead5d3">More...</a><br /></td></tr>
+<tr class="separator:ac51d39dcee456d907853beedc8ead5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d90d6c13be993cabb581efcade81592"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a4d90d6c13be993cabb581efcade81592">Mueva_v</a> (double dt)</td></tr>
+<tr class="memdesc:a4d90d6c13be993cabb581efcade81592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza la velocidad (Paso de medio paso o paso completo).  <a href="classBola.html#a4d90d6c13be993cabb581efcade81592">More...</a><br /></td></tr>
+<tr class="separator:a4d90d6c13be993cabb581efcade81592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2986644b573031b1ee1e5e91aef1d699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a2986644b573031b1ee1e5e91aef1d699">ResetFuerza</a> ()</td></tr>
+<tr class="separator:a2986644b573031b1ee1e5e91aef1d699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b4bb8a58dfab868e0a9c7c9e250edf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a07b4bb8a58dfab868e0a9c7c9e250edf">AgregueFuerza</a> (double Fx, double Fy)</td></tr>
+<tr class="separator:a07b4bb8a58dfab868e0a9c7c9e250edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fd6de1df92adc47882e7d9a32da0ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a2fd6de1df92adc47882e7d9a32da0ec5">ResuelvaColisionParedesRobusto</a> (const <a class="el" href="classCaja.html">Caja</a> &amp;C)</td></tr>
-<tr class="memdesc:a2fd6de1df92adc47882e7d9a32da0ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resuelve colisiones robustas con las paredes de la caja.  <a href="classBola.html#a2fd6de1df92adc47882e7d9a32da0ec5">More...</a><br /></td></tr>
 <tr class="separator:a2fd6de1df92adc47882e7d9a32da0ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a596a66bfb30b0a4f536b0fe897934ea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a596a66bfb30b0a4f536b0fe897934ea7">ChoqueElastico</a> (<a class="el" href="classBola.html">Bola</a> &amp;otra)</td></tr>
-<tr class="memdesc:a596a66bfb30b0a4f536b0fe897934ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resuelve una colisión elástica con otra bola.  <a href="classBola.html#a596a66bfb30b0a4f536b0fe897934ea7">More...</a><br /></td></tr>
-<tr class="separator:a596a66bfb30b0a4f536b0fe897934ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f4554b01d317e9a58cf26c5a53fbad"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#ab7f4554b01d317e9a58cf26c5a53fbad">Getx</a> () const</td></tr>
-<tr class="memdesc:ab7f4554b01d317e9a58cf26c5a53fbad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la coordenada x.  <a href="classBola.html#ab7f4554b01d317e9a58cf26c5a53fbad">More...</a><br /></td></tr>
 <tr class="separator:ab7f4554b01d317e9a58cf26c5a53fbad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2be6b2367bc344ee4186764250bfb6c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#ac2be6b2367bc344ee4186764250bfb6c">Gety</a> () const</td></tr>
-<tr class="memdesc:ac2be6b2367bc344ee4186764250bfb6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la coordenada y.  <a href="classBola.html#ac2be6b2367bc344ee4186764250bfb6c">More...</a><br /></td></tr>
 <tr class="separator:ac2be6b2367bc344ee4186764250bfb6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4667b8019585645fab564cd5643b3956"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a4667b8019585645fab564cd5643b3956">Getvx</a> () const</td></tr>
-<tr class="memdesc:a4667b8019585645fab564cd5643b3956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la componente vx.  <a href="classBola.html#a4667b8019585645fab564cd5643b3956">More...</a><br /></td></tr>
 <tr class="separator:a4667b8019585645fab564cd5643b3956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac681c7556fda8884a19c653268f2d60a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#ac681c7556fda8884a19c653268f2d60a">Getvy</a> () const</td></tr>
-<tr class="memdesc:ac681c7556fda8884a19c653268f2d60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la componente vy.  <a href="classBola.html#ac681c7556fda8884a19c653268f2d60a">More...</a><br /></td></tr>
 <tr class="separator:ac681c7556fda8884a19c653268f2d60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178f834fd96f5fc6fe891414c2b94337"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a178f834fd96f5fc6fe891414c2b94337">GetFx</a> () const</td></tr>
+<tr class="separator:a178f834fd96f5fc6fe891414c2b94337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bebf741d5db7e15e397e61f347a5790"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a4bebf741d5db7e15e397e61f347a5790">GetFy</a> () const</td></tr>
+<tr class="separator:a4bebf741d5db7e15e397e61f347a5790"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29641540a2e6c8d4733917cafcfdcefe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a29641540a2e6c8d4733917cafcfdcefe">Getm</a> () const</td></tr>
-<tr class="memdesc:a29641540a2e6c8d4733917cafcfdcefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna la masa.  <a href="classBola.html#a29641540a2e6c8d4733917cafcfdcefe">More...</a><br /></td></tr>
 <tr class="separator:a29641540a2e6c8d4733917cafcfdcefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49de2b63d259fc6c6d89caed59effb00"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBola.html#a49de2b63d259fc6c6d89caed59effb00">Getr</a> () const</td></tr>
-<tr class="memdesc:a49de2b63d259fc6c6d89caed59effb00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el radio.  <a href="classBola.html#a49de2b63d259fc6c6d89caed59effb00">More...</a><br /></td></tr>
 <tr class="separator:a49de2b63d259fc6c6d89caed59effb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Representa una bola en una simulación de billar 2D. </p>
-<p >Cada bola posee propiedades físicas básicas (posición, velocidad, masa y radio) y puede interactuar elásticamente con otras bolas y con las paredes de una caja. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2c72890a5147379786c8dd441229753f" name="a2c72890a5147379786c8dd441229753f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c72890a5147379786c8dd441229753f">&#9670;&nbsp;</a></span>Bola()</h2>
 
@@ -153,45 +143,84 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor por defecto. Inicializa una bola en el origen con masa y radio por defecto. </p>
-<p >Constructor por defecto.</p>
-<p >Inicializa la bola en el origen con velocidad cero, masa unitaria y radio 0.1. </p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a596a66bfb30b0a4f536b0fe897934ea7" name="a596a66bfb30b0a4f536b0fe897934ea7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a596a66bfb30b0a4f536b0fe897934ea7">&#9670;&nbsp;</a></span>ChoqueElastico()</h2>
+<a id="a07b4bb8a58dfab868e0a9c7c9e250edf" name="a07b4bb8a58dfab868e0a9c7c9e250edf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b4bb8a58dfab868e0a9c7c9e250edf">&#9670;&nbsp;</a></span>AgregueFuerza()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Bola::ChoqueElastico </td>
+          <td class="memname">void Bola::AgregueFuerza </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classBola.html">Bola</a> &amp;&#160;</td>
-          <td class="paramname"><em>otra</em></td><td>)</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Fx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Fy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Resuelve una colisión elástica con otra bola. </p>
-<p >Resuelve una colisión elástica entre dos bolas.</p>
-<p >Conserva el momento lineal y la energía cinética en el sistema de dos bolas. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">otra</td><td>Referencia a la otra bola.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Conserva el momento lineal y la energía cinética del sistema de dos bolas. Si las bolas se solapan, también realiza una corrección de posición para separarlas.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">otra</td><td>Referencia a la otra bola con la que colisiona. </td></tr>
-  </table>
-  </dd>
-</dl>
-<p >&lt; Impulso escalar.</p>
+</div>
+</div>
+<a id="a178f834fd96f5fc6fe891414c2b94337" name="a178f834fd96f5fc6fe891414c2b94337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a178f834fd96f5fc6fe891414c2b94337">&#9670;&nbsp;</a></span>GetFx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Bola::GetFx </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bebf741d5db7e15e397e61f347a5790" name="a4bebf741d5db7e15e397e61f347a5790"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bebf741d5db7e15e397e61f347a5790">&#9670;&nbsp;</a></span>GetFy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Bola::GetFy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -218,8 +247,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retorna la masa. </p>
-
 </div>
 </div>
 <a id="a49de2b63d259fc6c6d89caed59effb00" name="a49de2b63d259fc6c6d89caed59effb00"></a>
@@ -244,8 +271,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Retorna el radio. </p>
 
 </div>
 </div>
@@ -272,8 +297,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retorna la componente vx. </p>
-
 </div>
 </div>
 <a id="ac681c7556fda8884a19c653268f2d60a" name="ac681c7556fda8884a19c653268f2d60a"></a>
@@ -298,8 +321,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Retorna la componente vy. </p>
 
 </div>
 </div>
@@ -326,8 +347,6 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retorna la coordenada x. </p>
-
 </div>
 </div>
 <a id="ac2be6b2367bc344ee4186764250bfb6c" name="ac2be6b2367bc344ee4186764250bfb6c"></a>
@@ -352,8 +371,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Retorna la coordenada y. </p>
 
 </div>
 </div>
@@ -407,29 +424,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inicializa los parámetros físicos de la bola. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x0</td><td>Posición inicial en x. </td></tr>
-    <tr><td class="paramname">y0</td><td>Posición inicial en y. </td></tr>
-    <tr><td class="paramname">vx0</td><td>Velocidad inicial en x. </td></tr>
-    <tr><td class="paramname">vy0</td><td>Velocidad inicial en y. </td></tr>
-    <tr><td class="paramname">m0</td><td>Masa. </td></tr>
-    <tr><td class="paramname">r0</td><td>Radio. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
-<a id="ad66b44c605f26f46c3f88451c479f8eb" name="ad66b44c605f26f46c3f88451c479f8eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad66b44c605f26f46c3f88451c479f8eb">&#9670;&nbsp;</a></span>Muevase()</h2>
+<a id="ac51d39dcee456d907853beedc8ead5d3" name="ac51d39dcee456d907853beedc8ead5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51d39dcee456d907853beedc8ead5d3">&#9670;&nbsp;</a></span>Mueva_r()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Bola::Muevase </td>
+          <td class="memname">void Bola::Mueva_r </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>dt</em></td><td>)</td>
@@ -438,21 +442,50 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Actualiza la posición de la bola usando integración simple. </p>
-<p >Avanza la posición de la bola según su velocidad.</p>
+<p>Actualiza la posición (Paso 1 de Velocity-Verlet). r(t+dt) = r(t) + v(t)dt + 0.5*a(t)dt^2 Pero en Velocity Verlet estándar se suele hacer: r += v * dt + 0.5 * a * dt^2 O el esquema: v(1/2) = v + 0.5*a*dt; r(new) = r + v(1/2)*dt. Aquí usaremos métodos granulares para que <a class="el" href="classSistema.html">Sistema</a> controle el orden. </p>
+
+</div>
+</div>
+<a id="a4d90d6c13be993cabb581efcade81592" name="a4d90d6c13be993cabb581efcade81592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d90d6c13be993cabb581efcade81592">&#9670;&nbsp;</a></span>Mueva_v()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bola::Mueva_v </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualiza la velocidad (Paso de medio paso o paso completo). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>Paso de tiempo.</td></tr>
+    <tr><td class="paramname">dt</td><td>Paso de tiempo (puede ser dt o dt/2). </td></tr>
   </table>
   </dd>
 </dl>
-<p>Este método no considera colisiones; simplemente actualiza la posición usando el paso de tiempo <code>dt</code>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dt</td><td>Paso de tiempo. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+</div>
+</div>
+<a id="a2986644b573031b1ee1e5e91aef1d699" name="a2986644b573031b1ee1e5e91aef1d699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2986644b573031b1ee1e5e91aef1d699">&#9670;&nbsp;</a></span>ResetFuerza()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bola::ResetFuerza </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -471,73 +504,12 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Resuelve colisiones robustas con las paredes de la caja. </p>
-<p >Corrige tanto la posición como la velocidad para evitar que la bola atraviese las paredes.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">C</td><td><a class="el" href="classCaja.html" title="Representa el recinto rectangular donde se mueven las bolas.">Caja</a> con la que colisiona.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Además de invertir la velocidad, este método ajusta la posición de la bola para evitar que atraviese las paredes, mejorando la estabilidad numérica de la simulación.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">C</td><td><a class="el" href="classCaja.html" title="Representa el recinto rectangular donde se mueven las bolas.">Caja</a> con la que colisiona. </td></tr>
-  </table>
-  </dd>
-</dl>
-<p >&lt; Corrige posición en x.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBola_a2fd6de1df92adc47882e7d9a32da0ec5_cgraph.png" border="0" usemap="#aclassBola_a2fd6de1df92adc47882e7d9a32da0ec5_cgraph" alt=""/></div>
 <map name="aclassBola_a2fd6de1df92adc47882e7d9a32da0ec5_cgraph" id="aclassBola_a2fd6de1df92adc47882e7d9a32da0ec5_cgraph">
-<area shape="rect" title="Resuelve colisiones robustas con las paredes de la caja." alt="" coords="5,23,228,65"/>
-<area shape="rect" href="classCaja.html#ad0091ef14592dfd7bdb685c5666220dc" title="Retorna el alto de la caja." alt="" coords="277,5,369,32"/>
-<area shape="rect" href="classCaja.html#ab2f4a60f732d4d729ccc27156da20741" title="Retorna el ancho de la caja." alt="" coords="276,56,371,83"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a593052a47503dd40e15603215b307825" name="a593052a47503dd40e15603215b307825"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a593052a47503dd40e15603215b307825">&#9670;&nbsp;</a></span>ResuelvaColisionParedesSimple()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Bola::ResuelvaColisionParedesSimple </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classCaja.html">Caja</a> &amp;&#160;</td>
-          <td class="paramname"><em>C</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resuelve colisiones simples con las paredes de la caja. </p>
-<p >Invierte la velocidad al chocar con una pared, pero puede causar adherencia si el tiempo de integración es grande.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">C</td><td><a class="el" href="classCaja.html" title="Representa el recinto rectangular donde se mueven las bolas.">Caja</a> con la que colisiona.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Si la bola toca una pared y se mueve hacia ella, su velocidad se invierte. Este método no corrige la posición y puede causar “pegado” si el paso de tiempo es grande.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">C</td><td><a class="el" href="classCaja.html" title="Representa el recinto rectangular donde se mueven las bolas.">Caja</a> con la que colisiona. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBola_a593052a47503dd40e15603215b307825_cgraph.png" border="0" usemap="#aclassBola_a593052a47503dd40e15603215b307825_cgraph" alt=""/></div>
-<map name="aclassBola_a593052a47503dd40e15603215b307825_cgraph" id="aclassBola_a593052a47503dd40e15603215b307825_cgraph">
-<area shape="rect" title="Resuelve colisiones simples con las paredes de la caja." alt="" coords="5,23,228,65"/>
+<area shape="rect" title=" " alt="" coords="5,23,228,65"/>
 <area shape="rect" href="classCaja.html#ad0091ef14592dfd7bdb685c5666220dc" title="Retorna el alto de la caja." alt="" coords="277,5,369,32"/>
 <area shape="rect" href="classCaja.html#ab2f4a60f732d4d729ccc27156da20741" title="Retorna el ancho de la caja." alt="" coords="276,56,371,83"/>
 </map>

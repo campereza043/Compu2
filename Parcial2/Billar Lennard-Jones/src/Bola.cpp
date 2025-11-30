@@ -6,7 +6,7 @@
 #include "Bola.h"
 #include <cmath>
 
-Bola::Bola() : x(0), y(0), vx(0), vy(0), fx(0), fy(0), m(1.0), r(0.1) {}
+Bola::Bola() : x(0), y(0), vx(0), vy(0), fx(0), fy(0), m(1.0), r(0.2) {}
 
 void Bola::Inicie(double x0, double y0, double vx0, double vy0, double m0, double r0) {
     x = x0; y = y0;

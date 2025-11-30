@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['verlet_0',['Verlet',['../Sistema_8h.html#a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9',1,'Sistema.h']]]
+  ['reserve_0',['Reserve',['../classSistema.html#a2e55c31904e592840591b8a4b1e2e75e',1,'Sistema']]],
+  ['resetfuerza_1',['ResetFuerza',['../classBola.html#a2986644b573031b1ee1e5e91aef1d699',1,'Bola']]],
+  ['resuelvacolisionparedesrobusto_2',['ResuelvaColisionParedesRobusto',['../classBola.html#a2fd6de1df92adc47882e7d9a32da0ec5',1,'Bola']]]
 ];

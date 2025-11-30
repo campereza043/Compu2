@@ -7,10 +7,12 @@ import sys
 
 # --- Configuración ---
 FILENAME = "../results/trayectorias.dat"
-# Valores por defecto si no se pasan argumentos
+GIF_FILENAME = "../results/animacion.gif" # Nombre del archivo de salida
+
+# Valores por defecto
 W_default, H_default = 20.0, 20.0 
 
-# Leer argumentos de línea de comandos pasados por C++
+# Leer argumentos de línea de comandos (W y H)
 if len(sys.argv) >= 3:
     try:
         W = float(sys.argv[1])
@@ -39,10 +41,7 @@ def calcular_energia(df, N):
         k_step = 0
         u_step = 0
         
-        # En el .dat, la columna 0 es 't'. 
-        # Las partículas empiezan en índice 1. Cada una tiene 4 columnas (x, y, vx, vy)
-        
-        # Arrays temporales
+        # Arrays temporales para posiciones
         xs = []
         ys = []
         
@@ -78,19 +77,16 @@ def calcular_energia(df, N):
 def main():
     if not os.path.exists(FILENAME):
         print(f"Error: No se encuentra el archivo {FILENAME}")
-        print("Asegúrate de ejecutar primero la simulación en C++.")
         return
 
     print("Cargando datos .dat...")
-    # 'sep="\s+"' permite leer espacios o tabulaciones como delimitador
     data = pd.read_csv(FILENAME, sep="\s+")
     
-    # Deducir número de partículas
-    # Columnas: t, (x, y, vx, vy) * N -> Total = 1 + 4N
+    # Deducir número de partículas: Columnas = 1 + 4N
     N = (data.shape[1] - 1) // 4
     print(f"Detectadas {N} partículas.")
 
-    # 2. Análisis de Energía
+    # --- Análisis de Energía ---
     K, U, E_total = calcular_energia(data, N)
     t = data['t']
     
@@ -100,13 +96,13 @@ def main():
     plt.plot(t, E_total, label='Total (E)', color='black', linewidth=2)
     plt.xlabel('Tiempo')
     plt.ylabel('Energía')
-    plt.title(f'Energía (N={N}, W={W}, H={H})')
+    plt.title(f'Energía (N={N})')
     plt.legend()
     plt.grid(True)
     plt.savefig("../results/energia.png")
     print("Gráfica de energía guardada.")
 
-    # 3. Histograma
+    # --- Histograma ---
     velocidades_finales = []
     last_row = data.iloc[-1]
     for p in range(N):
@@ -123,7 +119,7 @@ def main():
     plt.savefig("../results/histograma.png")
     print("Histograma guardado.")
 
-    # 4. Animación
+    # --- Animación ---
     print("Generando animación...")
     fig, ax = plt.subplots(figsize=(6, 6))
     ax.set_xlim(0, W)
@@ -132,7 +128,7 @@ def main():
     ax.grid(True, linestyle='--', alpha=0.5)
     ax.set_title(f"Gas Lennard-Jones (N={N})")
     
-    particles, = ax.plot([], [], 'bo', markersize=8, markeredgecolor='k')
+    particles, = ax.plot([], [], marker='o', color='purple', markersize=8, linestyle='')
     time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes)
     
     def init():
@@ -155,14 +151,22 @@ def main():
         time_text.set_text(f't = {row["t"]:.2f}')
         return particles, time_text
 
-    # Reducir frames si hay demasiados datos
+    # Reducir frames para que el GIF no sea gigante
+    # Ajusta el 400 si quieres más o menos frames en total
     step = max(1, len(data) // 400) 
     anim_data = data.iloc[::step]
     
     ani = animation.FuncAnimation(fig, animate, frames=len(anim_data), 
                                   init_func=init, interval=30, blit=True)
     
-    print("Mostrando animación... (Cierra la ventana para terminar)")
+    # --- GUARDAR GIF ---
+    print(f"Guardando GIF en {GIF_FILENAME} (esto puede tardar unos segundos)...")
+    # writer='pillow' es el estándar para GIFs sin instalar ffmpeg
+    ani.save(GIF_FILENAME, writer='pillow', fps=30)
+    print("GIF guardado exitosamente.")
+
+    # --- MOSTRAR ---
+    print("Mostrando animación en ventana... (Cierra la ventana para terminar)")
     plt.show()
 
 if __name__ == "__main__":

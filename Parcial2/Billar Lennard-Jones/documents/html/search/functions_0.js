@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bola_0',['Bola',['../classBola.html#a2c72890a5147379786c8dd441229753f',1,'Bola']]]
+  ['agreguefuerza_0',['AgregueFuerza',['../classBola.html#a07b4bb8a58dfab868e0a9c7c9e250edf',1,'Bola']]]
 ];

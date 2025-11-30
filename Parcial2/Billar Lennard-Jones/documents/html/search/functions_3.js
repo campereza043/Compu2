@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['encabezado_0',['Encabezado',['../classSistema.html#a71a81476ad8a8ac2b0a06742b85a78ae',1,'Sistema']]]
+  ['defina_0',['Defina',['../classCaja.html#a9cd8809c372b290af430b7d8ce2c3e03',1,'Caja']]],
+  ['definacaja_1',['DefinaCaja',['../classSistema.html#adb2b5a979b87479863df1c5fe6f97bd3',1,'Sistema']]],
+  ['definaparametroslj_2',['DefinaParametrosLJ',['../classSistema.html#ac09d365cbf640c077298e9b301808d45',1,'Sistema']]]
 ];

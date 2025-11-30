@@ -90,39 +90,46 @@ $(document).ready(function(){initNavTree('classSistema.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
-<p>Representa el sistema completo de simulación de un billar de N bolas.  
- <a href="classSistema.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="Sistema_8h_source.html">Sistema.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a815b07845ef6b03247b239333fe75e28"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a815b07845ef6b03247b239333fe75e28">Sistema</a> ()</td></tr>
+<tr class="separator:a815b07845ef6b03247b239333fe75e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb2b5a979b87479863df1c5fe6f97bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#adb2b5a979b87479863df1c5fe6f97bd3">DefinaCaja</a> (double W, double H)</td></tr>
-<tr class="memdesc:adb2b5a979b87479863df1c5fe6f97bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define las dimensiones de la caja contenedora.  <a href="classSistema.html#adb2b5a979b87479863df1c5fe6f97bd3">More...</a><br /></td></tr>
 <tr class="separator:adb2b5a979b87479863df1c5fe6f97bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac09d365cbf640c077298e9b301808d45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#ac09d365cbf640c077298e9b301808d45">DefinaParametrosLJ</a> (double eps, double sig)</td></tr>
+<tr class="separator:ac09d365cbf640c077298e9b301808d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e55c31904e592840591b8a4b1e2e75e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a2e55c31904e592840591b8a4b1e2e75e">Reserve</a> (int N)</td></tr>
-<tr class="memdesc:a2e55c31904e592840591b8a4b1e2e75e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserva memoria para un número determinado de bolas.  <a href="classSistema.html#a2e55c31904e592840591b8a4b1e2e75e">More...</a><br /></td></tr>
 <tr class="separator:a2e55c31904e592840591b8a4b1e2e75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7686509bf666db925fc410868e072a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#af7686509bf666db925fc410868e072a6">InicialiceRejilla</a> (double m, double r, double v_max, bool alterna=false)</td></tr>
-<tr class="memdesc:af7686509bf666db925fc410868e072a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa las bolas en una configuración de rejilla.  <a href="classSistema.html#af7686509bf666db925fc410868e072a6">More...</a><br /></td></tr>
-<tr class="separator:af7686509bf666db925fc410868e072a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2072a1bdf9e0ee2e9a4c2043e4659358"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a2072a1bdf9e0ee2e9a4c2043e4659358">SeleccioneIntegrador</a> (const std::string &amp;nombre)</td></tr>
-<tr class="memdesc:a2072a1bdf9e0ee2e9a4c2043e4659358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selecciona el integrador a utilizar.  <a href="classSistema.html#a2072a1bdf9e0ee2e9a4c2043e4659358">More...</a><br /></td></tr>
-<tr class="separator:a2072a1bdf9e0ee2e9a4c2043e4659358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbcd1a336bcfd21c54d0965e9a5e3f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#abbcd1a336bcfd21c54d0965e9a5e3f44">InicialiceRejilla</a> (double m, double r, double v_max)</td></tr>
+<tr class="separator:abbcd1a336bcfd21c54d0965e9a5e3f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e568843c4c39b916a1bc08ac213517f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a6e568843c4c39b916a1bc08ac213517f">Paso</a> (double dt)</td></tr>
-<tr class="memdesc:a6e568843c4c39b916a1bc08ac213517f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta un paso temporal del sistema según el integrador actual.  <a href="classSistema.html#a6e568843c4c39b916a1bc08ac213517f">More...</a><br /></td></tr>
 <tr class="separator:a6e568843c4c39b916a1bc08ac213517f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a81476ad8a8ac2b0a06742b85a78ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a71a81476ad8a8ac2b0a06742b85a78ae">Encabezado</a> (std::ofstream &amp;f)</td></tr>
-<tr class="memdesc:a71a81476ad8a8ac2b0a06742b85a78ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escribe el encabezado de columnas en un archivo de salida.  <a href="classSistema.html#a71a81476ad8a8ac2b0a06742b85a78ae">More...</a><br /></td></tr>
 <tr class="separator:a71a81476ad8a8ac2b0a06742b85a78ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a5e4f4a5d479c7a805d5adc33429ff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSistema.html#a1a5e4f4a5d479c7a805d5adc33429ff7">Guarde</a> (std::ofstream &amp;f, double t)</td></tr>
-<tr class="memdesc:a1a5e4f4a5d479c7a805d5adc33429ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guarda el estado actual del sistema en un archivo.  <a href="classSistema.html#a1a5e4f4a5d479c7a805d5adc33429ff7">More...</a><br /></td></tr>
 <tr class="separator:a1a5e4f4a5d479c7a805d5adc33429ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Representa el sistema completo de simulación de un billar de N bolas. </p>
-<p >Contiene la caja, las bolas y el método de integración seleccionado. Se encarga de actualizar el sistema en cada paso de tiempo y guardar los resultados. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a815b07845ef6b03247b239333fe75e28" name="a815b07845ef6b03247b239333fe75e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a815b07845ef6b03247b239333fe75e28">&#9670;&nbsp;</a></span>Sistema()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sistema::Sistema </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="adb2b5a979b87479863df1c5fe6f97bd3" name="adb2b5a979b87479863df1c5fe6f97bd3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb2b5a979b87479863df1c5fe6f97bd3">&#9670;&nbsp;</a></span>DefinaCaja()</h2>
 
@@ -148,25 +155,43 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Define las dimensiones de la caja contenedora. </p>
-<p >Define las dimensiones de la caja de simulación.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">W</td><td>Ancho de la caja. </td></tr>
-    <tr><td class="paramname">H</td><td>Alto de la caja. </td></tr>
-  </table>
-  </dd>
-</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSistema_adb2b5a979b87479863df1c5fe6f97bd3_cgraph.png" border="0" usemap="#aclassSistema_adb2b5a979b87479863df1c5fe6f97bd3_cgraph" alt=""/></div>
 <map name="aclassSistema_adb2b5a979b87479863df1c5fe6f97bd3_cgraph" id="aclassSistema_adb2b5a979b87479863df1c5fe6f97bd3_cgraph">
-<area shape="rect" title="Define las dimensiones de la caja contenedora." alt="" coords="5,5,160,32"/>
+<area shape="rect" title=" " alt="" coords="5,5,160,32"/>
 <area shape="rect" href="classCaja.html#a9cd8809c372b290af430b7d8ce2c3e03" title="Define las dimensiones de la caja." alt="" coords="208,5,309,32"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="ac09d365cbf640c077298e9b301808d45" name="ac09d365cbf640c077298e9b301808d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac09d365cbf640c077298e9b301808d45">&#9670;&nbsp;</a></span>DefinaParametrosLJ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sistema::DefinaParametrosLJ </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sig</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -185,15 +210,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Escribe el encabezado de columnas en un archivo de salida. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>Flujo de salida (archivo abierto).</td></tr>
-    <tr><td class="paramname">f</td><td>Archivo de salida abierto. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -223,21 +239,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Guarda el estado actual del sistema en un archivo. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f</td><td>Flujo de salida (archivo abierto). </td></tr>
-    <tr><td class="paramname">t</td><td>Tiempo actual de la simulación.</td></tr>
-    <tr><td class="paramname">f</td><td>Archivo de salida abierto. </td></tr>
-    <tr><td class="paramname">t</td><td>Tiempo actual de la simulación. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
-<a id="af7686509bf666db925fc410868e072a6" name="af7686509bf666db925fc410868e072a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7686509bf666db925fc410868e072a6">&#9670;&nbsp;</a></span>InicialiceRejilla()</h2>
+<a id="abbcd1a336bcfd21c54d0965e9a5e3f44" name="abbcd1a336bcfd21c54d0965e9a5e3f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbcd1a336bcfd21c54d0965e9a5e3f44">&#9670;&nbsp;</a></span>InicialiceRejilla()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,13 +263,7 @@ Here is the call graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>vmax</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>alterna</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>v_max</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -273,35 +272,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Inicializa las bolas en una configuración de rejilla. </p>
-<p >Inicializa las bolas en una distribución de rejilla.</p>
-<p >Las posiciones se distribuyen uniformemente y las velocidades pueden asignarse aleatoriamente hasta un valor máximo dado.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>Masa de cada bola. </td></tr>
-    <tr><td class="paramname">r</td><td>Radio de cada bola. </td></tr>
-    <tr><td class="paramname">v_max</td><td>Velocidad máxima inicial. </td></tr>
-    <tr><td class="paramname">alterna</td><td>Si es verdadero, alterna el sentido de las velocidades.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Las bolas se ubican uniformemente dentro de la caja y se les asignan velocidades aleatorias hasta un máximo <code>vmax</code>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>Masa de cada bola. </td></tr>
-    <tr><td class="paramname">r</td><td>Radio de cada bola. </td></tr>
-    <tr><td class="paramname">vmax</td><td>Velocidad máxima inicial. </td></tr>
-    <tr><td class="paramname">alterna</td><td>Si es true, alterna la dirección de las velocidades. </td></tr>
-  </table>
-  </dd>
-</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSistema_af7686509bf666db925fc410868e072a6_cgraph.png" border="0" usemap="#aclassSistema_af7686509bf666db925fc410868e072a6_cgraph" alt=""/></div>
-<map name="aclassSistema_af7686509bf666db925fc410868e072a6_cgraph" id="aclassSistema_af7686509bf666db925fc410868e072a6_cgraph">
-<area shape="rect" title="Inicializa las bolas en una configuración de rejilla." alt="" coords="5,31,188,57"/>
+<div class="center"><img src="classSistema_abbcd1a336bcfd21c54d0965e9a5e3f44_cgraph.png" border="0" usemap="#aclassSistema_abbcd1a336bcfd21c54d0965e9a5e3f44_cgraph" alt=""/></div>
+<map name="aclassSistema_abbcd1a336bcfd21c54d0965e9a5e3f44_cgraph" id="aclassSistema_abbcd1a336bcfd21c54d0965e9a5e3f44_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,188,57"/>
 <area shape="rect" href="classCaja.html#ad0091ef14592dfd7bdb685c5666220dc" title="Retorna el alto de la caja." alt="" coords="237,5,329,32"/>
 <area shape="rect" href="classCaja.html#ab2f4a60f732d4d729ccc27156da20741" title="Retorna el ancho de la caja." alt="" coords="236,56,331,83"/>
 </map>
@@ -325,15 +301,6 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Ejecuta un paso temporal del sistema según el integrador actual. </p>
-<p >Realiza un paso temporal del sistema según el integrador actual.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dt</td><td>Paso de tiempo. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="a2e55c31904e592840591b8a4b1e2e75e" name="a2e55c31904e592840591b8a4b1e2e75e"></a>
@@ -351,50 +318,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Reserva memoria para un número determinado de bolas. </p>
-<p >Reserva memoria para N bolas en la simulación.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">N</td><td>Número de bolas a reservar.</td></tr>
-    <tr><td class="paramname">N</td><td>Número de bolas. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2072a1bdf9e0ee2e9a4c2043e4659358" name="a2072a1bdf9e0ee2e9a4c2043e4659358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2072a1bdf9e0ee2e9a4c2043e4659358">&#9670;&nbsp;</a></span>SeleccioneIntegrador()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Sistema::SeleccioneIntegrador </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>nombre</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Selecciona el integrador a utilizar. </p>
-<p >Selecciona el método de integración temporal.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nombre</td><td>Nombre del integrador ("Euler" o "Verlet").</td></tr>
-    <tr><td class="paramname">nombre</td><td>Nombre del integrador ("euler" o "verlet"). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>Si el nombre no es válido. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
