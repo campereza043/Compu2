@@ -1,0 +1,5 @@
+/home/debian12/Documentos/UD/Compu2/Parcial2/Billar Lennard-Jones/build/CMakeFiles/simulacion.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/Billar Lennard-Jones/build/CMakeFiles/docs.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/Billar Lennard-Jones/build/CMakeFiles/clean_all.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/Billar Lennard-Jones/build/CMakeFiles/edit_cache.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/Billar Lennard-Jones/build/CMakeFiles/rebuild_cache.dir
