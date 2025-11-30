@@ -1,179 +1,138 @@
 /**
  * @file Sistema.cpp
- * @brief Implementación de la clase Sistema, que coordina la simulación del billar.
- * 
- * Este archivo contiene la lógica para el avance temporal, las colisiones entre bolas,
- * y la escritura de resultados a archivos de salida.
+ * @brief Implementación de Dinámica Molecular (LJ + Velocity Verlet).
  */
-
+#define _USE_MATH_DEFINES
 #include "Sistema.h"
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-#include <stdexcept> // std::invalid_argument
 
-/**
- * @brief Selecciona el método de integración temporal.
- * 
- * @param nombre Nombre del integrador ("euler" o "verlet").
- * @throws std::invalid_argument Si el nombre no es válido.
- */
-void Sistema::SeleccioneIntegrador(const std::string& nombre) {
-    if (nombre == "euler") {
-        integrador_actual = Integrador::Euler;
-    } else if (nombre == "verlet") {
-        integrador_actual = Integrador::Verlet;
-    } else {
-        throw std::invalid_argument("Integrador no válido. Elija 'euler' o 'verlet'.");
-    }
-}
+Sistema::Sistema() : epsilon(1.0), sigma(1.0) {}
 
-/**
- * @brief Realiza un paso temporal del sistema según el integrador actual.
- * 
- * @param dt Paso de tiempo.
- */
-void Sistema::Paso(double dt) {
-    if (integrador_actual == Integrador::Euler)
-        PasoEuler(dt);
-    else
-        PasoVerlet(dt);
-}
-
-/**
- * @brief Implementación del integrador de Euler.
- * 
- * Avanza la simulación mediante integración explícita.
- * Es sencillo, pero físicamente inexacto para colisiones rápidas.
- * 
- * @param dt Paso de tiempo.
- */
-void Sistema::PasoEuler(double dt) {
-    // 1. Mover todas las bolas
-    for (auto& b : bolas)
-        b.Muevase(dt);
-
-    // 2. Resolver colisiones con paredes
-    for (auto& b : bolas)
-        b.ResuelvaColisionParedesSimple(caja);
-
-    // 3. Resolver colisiones entre bolas
-    for (size_t i = 0; i < bolas.size(); ++i)
-        for (size_t j = i + 1; j < bolas.size(); ++j)
-            bolas[i].ChoqueElastico(bolas[j]);
-}
-
-/**
- * @brief Implementación del integrador de Verlet.
- * 
- * Más estable y físicamente correcto, corrige la posición
- * de las bolas al colisionar con las paredes.
- * 
- * @param dt Paso de tiempo.
- */
-void Sistema::PasoVerlet(double dt) {
-    // 1. Mover todas las bolas
-    for (auto& b : bolas)
-        b.Muevase(dt);
-
-    // 2. Resolver colisiones con paredes
-    for (auto& b : bolas)
-        b.ResuelvaColisionParedesRobusto(caja);
-
-    // 3. Resolver colisiones entre bolas
-    for (size_t i = 0; i < bolas.size(); ++i)
-        for (size_t j = i + 1; j < bolas.size(); ++j)
-            bolas[i].ChoqueElastico(bolas[j]);
-}
-
-/**
- * @brief Define las dimensiones de la caja de simulación.
- * @param W Ancho de la caja.
- * @param H Alto de la caja.
- */
 void Sistema::DefinaCaja(double W, double H) {
     caja.Defina(W, H);
 }
 
-/**
- * @brief Reserva memoria para N bolas en la simulación.
- * @param N Número de bolas.
- */
+void Sistema::DefinaParametrosLJ(double eps, double sig) {
+    epsilon = eps;
+    sigma = sig;
+}
+
 void Sistema::Reserve(int N) {
     bolas.resize(N);
 }
 
-/**
- * @brief Inicializa las bolas en una distribución de rejilla.
- * 
- * Las bolas se ubican uniformemente dentro de la caja y se les asignan
- * velocidades aleatorias hasta un máximo `vmax`.
- * 
- * @param m Masa de cada bola.
- * @param r Radio de cada bola.
- * @param vmax Velocidad máxima inicial.
- * @param alterna Si es true, alterna la dirección de las velocidades.
- */
-void Sistema::InicialiceRejilla(double m, double r, double vmax, bool alterna) {
+void Sistema::InicialiceRejilla(double m, double r, double vmax) {
     int N = bolas.size();
     if (N == 0) return;
+    srand(1); // Semilla fija para reproducibilidad
 
-    srand(time(nullptr));
-    double W = caja.GetW(), H = caja.GetH();
-
+    double W = caja.GetW();
+    double H = caja.GetH();
+    
     int cols = static_cast<int>(std::sqrt(N * W / H));
-    int rows = (N > 0) ? (N + cols - 1) / cols : 0;
-
-    double dx = (cols > 1) ? (W - 2*r) / (cols - 1) : W / 2.0;
-    double dy = (rows > 1) ? (H - 2*r) / (rows - 1) : H / 2.0;
+    int rows = (N + cols - 1) / cols; 
+    
+    // Distanciamiento para evitar explosión inicial por LJ
+    double dx = W / (cols + 1);
+    double dy = H / (rows + 1);
 
     for (int i = 0; i < N; ++i) {
         int row = i / cols;
         int col = i % cols;
-
-        double x0 = (cols > 1) ? r + col * dx : W / 2.0;
-        double y0 = (rows > 1) ? r + row * dy : H / 2.0;
-
-        double ang = 2 * M_PI * ((double)rand() / RAND_MAX);
+        
+        double x0 = (col + 1) * dx;
+        double y0 = (row + 1) * dy;
+        
+        // Velocidades aleatorias
+        double theta = 2.0 * M_PI * ((double)rand() / RAND_MAX);
         double v = vmax * ((double)rand() / RAND_MAX);
-        double vx = alterna && (i % 2 != 0) ? -v * cos(ang) : v * cos(ang);
-        double vy = alterna && (i % 2 != 0) ? -v * sin(ang) : v * sin(ang);
-
-        bolas[i].Inicie(x0, y0, vx, vy, m, r);
+        
+        bolas[i].Inicie(x0, y0, v*cos(theta), v*sin(theta), m, r);
     }
-
-    std::cout << "Inicialización en rejilla completada con " << N << " bolas.\n";
+    // Calcular fuerzas iniciales para el primer paso de Verlet
+    CalculeFuerzas();
 }
 
-/**
- * @brief Escribe el encabezado de columnas en un archivo de salida.
- * @param f Archivo de salida abierto.
- */
-void Sistema::Encabezado(std::ofstream& f) {
-    f << "# " << std::setw(9) << "t";
-    for (size_t i = 0; i < bolas.size(); i++) {
-        f << std::setw(15) << "x" + std::to_string(i)
-          << std::setw(15) << "y" + std::to_string(i)
-          << std::setw(15) << "vx" + std::to_string(i)
-          << std::setw(15) << "vy" + std::to_string(i);
+void Sistema::CalculeFuerzas() {
+    // 1. Resetear fuerzas de todas las partículas
+    for (auto& b : bolas) b.ResetFuerza();
+
+    // 2. Interacción Lennard-Jones (Pares) [cite: 24, 25]
+    int N = bolas.size();
+    for (int i = 0; i < N; ++i) {
+        for (int j = i + 1; j < N; ++j) {
+            double dx = bolas[j].Getx() - bolas[i].Getx();
+            double dy = bolas[j].Gety() - bolas[i].Gety();
+            double r2 = dx*dx + dy*dy;
+            
+            // Evitar singularidad numérica y optimización de cutoff (opcional)
+            if (r2 < 1e-4) r2 = 1e-4; 
+            
+            double r = std::sqrt(r2);
+            
+            // Cálculo optimizado de LJ
+            // F_mag = (24*eps/r) * [ 2*(sigma/r)^12 - (sigma/r)^6 ]
+            // F_vec = F_mag * (vec_r / r) = (F_mag / r) * vec_r
+            
+            double s_r = sigma / r;
+            double s_r_6 = s_r * s_r * s_r * s_r * s_r * s_r; // (sigma/r)^6
+            double s_r_12 = s_r_6 * s_r_6;                    // (sigma/r)^12
+            
+            // Magnitud de la fuerza escalar dividida por r (para vectorizar)
+            double F_over_r = (24.0 * epsilon / r2) * (2.0 * s_r_12 - s_r_6);
+            
+            double Fx = F_over_r * dx;
+            double Fy = F_over_r * dy;
+
+            // Tercera ley de Newton: F_ji = -F_ij
+            bolas[i].AgregueFuerza(-Fx, -Fy); // Atrae o repele a i
+            bolas[j].AgregueFuerza(Fx, Fy);   // Atrae o repele a j
+        }
     }
+}
+
+// Implementación de Velocity-Verlet 
+void Sistema::PasoVelocityVerlet(double dt) {
+    // 1. Primer medio paso de velocidad: v(t + dt/2) = v(t) + 0.5*a(t)*dt
+    for (auto& b : bolas) {
+        b.Mueva_v(0.5 * dt); 
+    }
+
+    // 2. Paso completo de posición: r(t + dt) = r(t) + v(t + dt/2)*dt
+    for (auto& b : bolas) {
+        b.Mueva_r(dt);
+        // Verificar condiciones de frontera inmediatamente al mover
+        b.ResuelvaColisionParedesRobusto(caja); 
+    }
+
+    // 3. Calcular fuerzas nuevas: a(t + dt)
+    CalculeFuerzas();
+
+    // 4. Segundo medio paso de velocidad: v(t + dt) = v(t + dt/2) + 0.5*a(t + dt)*dt
+    for (auto& b : bolas) {
+        b.Mueva_v(0.5 * dt);
+    }
+}
+
+void Sistema::Paso(double dt) {
+    PasoVelocityVerlet(dt);
+}
+
+void Sistema::Encabezado(std::ofstream& f) {
+    f << "t";
+    for(size_t i=0; i<bolas.size(); ++i) 
+        f << ",x" << i << ",y" << i << ",vx" << i << ",vy" << i;
     f << "\n";
 }
 
-/**
- * @brief Guarda el estado actual del sistema en un archivo.
- * 
- * @param f Archivo de salida abierto.
- * @param t Tiempo actual de la simulación.
- */
 void Sistema::Guarde(std::ofstream& f, double t) {
-    f << std::setw(10) << std::fixed << std::setprecision(4) << t;
+    f << t;
     for (const auto& b : bolas) {
-        f << std::setw(15) << std::fixed << std::setprecision(6) << b.Getx()
-          << std::setw(15) << std::fixed << std::setprecision(6) << b.Gety()
-          << std::setw(15) << std::fixed << std::setprecision(6) << b.Getvx()
-          << std::setw(15) << std::fixed << std::setprecision(6) << b.Getvy();
+        f << "," << b.Getx() << "," << b.Gety() 
+          << "," << b.Getvx() << "," << b.Getvy();
     }
     f << "\n";
 }

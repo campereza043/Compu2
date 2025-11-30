@@ -1,9 +1,6 @@
 /**
  * @file Bola.h
- * @brief Define la clase Bola que representa una partícula (bola) en el sistema de billar.
- * 
- * Esta clase contiene la posición, velocidad, masa y radio de una bola, 
- * así como los métodos necesarios para moverla y resolver colisiones con otras bolas o con las paredes.
+ * @brief Clase Bola actualizada para Dinámica Molecular con fuerzas.
  */
 
 #ifndef BOLA_H
@@ -11,75 +8,49 @@
 
 #include "Caja.h"
 
-/**
- * @class Bola
- * @brief Representa una bola en una simulación de billar 2D.
- * 
- * Cada bola posee propiedades físicas básicas (posición, velocidad, masa y radio)
- * y puede interactuar elásticamente con otras bolas y con las paredes de una caja.
- */
 class Bola {
 private:
-    double x, y;   ///< Posición (x, y) de la bola en el plano.
-    double vx, vy; ///< Componentes de la velocidad (vx, vy).
-    double m;      ///< Masa de la bola.
-    double r;      ///< Radio de la bola.
+    double x, y;       ///< Posición
+    double vx, vy;     ///< Velocidad
+    double fx, fy;     ///< Fuerza acumulada (Nueva)
+    double m;          ///< Masa
+    double r;          ///< Radio (para colisión con paredes y dibujo)
 
 public:
-    /** @brief Constructor por defecto. Inicializa una bola en el origen con masa y radio por defecto. */
     Bola();
-
-    /**
-     * @brief Inicializa los parámetros físicos de la bola.
-     * @param x0 Posición inicial en x.
-     * @param y0 Posición inicial en y.
-     * @param vx0 Velocidad inicial en x.
-     * @param vy0 Velocidad inicial en y.
-     * @param m0 Masa.
-     * @param r0 Radio.
-     */
     void Inicie(double x0, double y0, double vx0, double vy0, double m0, double r0);
 
     /**
-     * @brief Actualiza la posición de la bola usando integración simple.
-     * @param dt Paso de tiempo.
+     * @brief Actualiza la posición (Paso 1 de Velocity-Verlet).
+     * r(t+dt) = r(t) + v(t)dt + 0.5*a(t)dt^2
+     * Pero en Velocity Verlet estándar se suele hacer: r += v * dt + 0.5 * a * dt^2
+     * O el esquema: v(1/2) = v + 0.5*a*dt; r(new) = r + v(1/2)*dt.
+     * Aquí usaremos métodos granulares para que Sistema controle el orden.
      */
-    void Muevase(double dt);
+    void Mueva_r(double dt);
 
     /**
-     * @brief Resuelve colisiones simples con las paredes de la caja.
-     * 
-     * Invierte la velocidad al chocar con una pared, pero puede causar adherencia
-     * si el tiempo de integración es grande.
-     * 
-     * @param C Caja con la que colisiona.
+     * @brief Actualiza la velocidad (Paso de medio paso o paso completo).
+     * @param dt Paso de tiempo (puede ser dt o dt/2).
      */
-    void ResuelvaColisionParedesSimple(const Caja& C);
+    void Mueva_v(double dt);
 
-    /**
-     * @brief Resuelve colisiones robustas con las paredes de la caja.
-     * 
-     * Corrige tanto la posición como la velocidad para evitar que la bola atraviese las paredes.
-     * 
-     * @param C Caja con la que colisiona.
-     */
+    // Gestión de fuerzas
+    void ResetFuerza();
+    void AgregueFuerza(double Fx, double Fy);
+
+    // Colisiones con paredes (Reflexión elástica)
     void ResuelvaColisionParedesRobusto(const Caja& C);
 
-    /**
-     * @brief Resuelve una colisión elástica con otra bola.
-     * 
-     * Conserva el momento lineal y la energía cinética en el sistema de dos bolas.
-     * @param otra Referencia a la otra bola.
-     */
-    void ChoqueElastico(Bola& otra);
-
-    // ===== Getters =====
-    double Getx() const { return x; } ///< Retorna la coordenada x.
-    double Gety() const { return y; } ///< Retorna la coordenada y.
-    double Getvx() const { return vx; } ///< Retorna la componente vx.
-    double Getvy() const { return vy; } ///< Retorna la componente vy.
-    double Getm() const { return m; } ///< Retorna la masa.
-    double Getr() const { return r; } ///< Retorna el radio.
+    // Getters
+    double Getx() const { return x; }
+    double Gety() const { return y; }
+    double Getvx() const { return vx; }
+    double Getvy() const { return vy; }
+    double GetFx() const { return fx; } // Debug
+    double GetFy() const { return fy; } // Debug
+    double Getm() const { return m; }
+    double Getr() const { return r; }
 };
 
 #endif
