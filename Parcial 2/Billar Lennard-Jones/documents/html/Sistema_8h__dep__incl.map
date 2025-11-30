@@ -1,0 +1,4 @@
+<map id="Sistema.h" name="Sistema.h">
+<area shape="rect" id="node1" title="Define la clase Sistema, que representa el conjunto de bolas y la caja donde se realiza la simulación..." alt="" coords="13,5,100,32"/>
+<area shape="rect" id="node2" href="$Sistema_8cpp.html" title="Implementación de la clase Sistema, que coordina la simulación del billar." alt="" coords="5,80,108,107"/>
+</map>

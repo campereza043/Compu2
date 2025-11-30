@@ -1,0 +1,51 @@
+# ===========================================================
+# Doxyfile para el proyecto Billar
+# ===========================================================
+
+# --- Información del proyecto ---
+PROJECT_NAME           = "Billar"
+PROJECT_BRIEF          = "Simulación de movimiento de pepas dentro de una caja."
+OUTPUT_DIRECTORY       = documents
+
+# --- Formatos de salida ---
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
+GENERATE_RTF           = NO
+GENERATE_MAN           = NO
+
+# --- Archivos a documentar ---
+INPUT                  = include src
+FILE_PATTERNS          = *.h *.cpp
+RECURSIVE              = YES
+
+# --- Opciones de extracción ---
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_ANON_NSPACES   = YES
+
+# --- Diagramas y gráficos ---
+HAVE_DOT               = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+CLASS_DIAGRAMS         = YES
+
+# --- Apariencia ---
+GENERATE_TREEVIEW      = YES
+FULL_PATH_NAMES        = NO
+SORT_MEMBER_DOCS       = YES
+
+# --- Advertencias ---
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+
+# --- Página principal (opcional) ---
+USE_MDFILE_AS_MAINPAGE = README.md

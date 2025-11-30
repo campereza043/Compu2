@@ -1,0 +1,68 @@
+\hypertarget{Sistema_8h}{}\doxysection{Sistema.\+h File Reference}
+\label{Sistema_8h}\index{Sistema.h@{Sistema.h}}
+
+
+Define la clase \mbox{\hyperlink{classSistema}{Sistema}}, que representa el conjunto de bolas y la caja donde se realiza la simulación.  
+
+
+{\ttfamily \#include \char`\"{}Caja.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bola.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Sistema.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Sistema_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{Sistema_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSistema}{Sistema}}
+\begin{DoxyCompactList}\small\item\em Representa el sistema completo de simulación de un billar de N bolas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}{Integrador}} \{ \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fda0a7532036415f2491bf5f952220827b8}{Euler}}
+, \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9}{Verlet}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeración para seleccionar el método de integración temporal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define la clase \mbox{\hyperlink{classSistema}{Sistema}}, que representa el conjunto de bolas y la caja donde se realiza la simulación. 
+
+La clase \mbox{\hyperlink{classSistema}{Sistema}} coordina la evolución temporal de todas las bolas, maneja la detección y resolución de colisiones, y gestiona la salida de datos. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}\label{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}} 
+\index{Sistema.h@{Sistema.h}!Integrador@{Integrador}}
+\index{Integrador@{Integrador}!Sistema.h@{Sistema.h}}
+\doxysubsubsection{\texorpdfstring{Integrador}{Integrador}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}{Integrador}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumeración para seleccionar el método de integración temporal. 
+
+Permite elegir entre los esquemas de Euler y Verlet. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Euler@{Euler}!Sistema.h@{Sistema.h}}\index{Sistema.h@{Sistema.h}!Euler@{Euler}}}\mbox{\Hypertarget{Sistema_8h_a90f054b130de7f70843185e5c31fb1fda0a7532036415f2491bf5f952220827b8}\label{Sistema_8h_a90f054b130de7f70843185e5c31fb1fda0a7532036415f2491bf5f952220827b8}} 
+Euler&Integración mediante el método de Euler explícito. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Verlet@{Verlet}!Sistema.h@{Sistema.h}}\index{Sistema.h@{Sistema.h}!Verlet@{Verlet}}}\mbox{\Hypertarget{Sistema_8h_a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9}\label{Sistema_8h_a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9}} 
+Verlet&Integración mediante el método de Verlet. \\
+\hline
+
+\end{DoxyEnumFields}

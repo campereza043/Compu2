@@ -1,0 +1,49 @@
+\hypertarget{Sistema_8h_source}{}\doxysection{Sistema.\+h}
+\label{Sistema_8h_source}\index{Sistema.h@{Sistema.h}}
+\mbox{\hyperlink{Sistema_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef SISTEMA\_H}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define SISTEMA\_H}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Caja_8h}{Caja.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Bola_8h}{Bola.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{24 \textcolor{keyword}{enum class} \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}{Integrador}} \{ }
+\DoxyCodeLine{25     \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fda0a7532036415f2491bf5f952220827b8}{Euler}},  }
+\DoxyCodeLine{26     \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9}{Verlet}}  }
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{36 \textcolor{keyword}{class }\mbox{\hyperlink{classSistema}{Sistema}} \{}
+\DoxyCodeLine{37 \textcolor{keyword}{private}:}
+\DoxyCodeLine{38     \mbox{\hyperlink{classCaja}{Caja}} caja;                    }
+\DoxyCodeLine{39     std::vector<Bola> bolas;      }
+\DoxyCodeLine{40     \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fd}{Integrador}} integrador\_actual = \mbox{\hyperlink{Sistema_8h_a90f054b130de7f70843185e5c31fb1fdac1f9df543f33d8a79fb2437c853f09b9}{Integrador::Verlet}}; }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} PasoEuler(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} PasoVerlet(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{public}:}
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_adb2b5a979b87479863df1c5fe6f97bd3}{DefinaCaja}}(\textcolor{keywordtype}{double} W, \textcolor{keywordtype}{double} H);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_a2e55c31904e592840591b8a4b1e2e75e}{Reserve}}(\textcolor{keywordtype}{int} N);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_af7686509bf666db925fc410868e072a6}{InicialiceRejilla}}(\textcolor{keywordtype}{double} m, \textcolor{keywordtype}{double} r, \textcolor{keywordtype}{double} v\_max, \textcolor{keywordtype}{bool} alterna = \textcolor{keyword}{false});}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_a2072a1bdf9e0ee2e9a4c2043e4659358}{SeleccioneIntegrador}}(\textcolor{keyword}{const} std::string\& nombre);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{92     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_a6e568843c4c39b916a1bc08ac213517f}{Paso}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{98     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_a71a81476ad8a8ac2b0a06742b85a78ae}{Encabezado}}(std::ofstream\& f);}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{void} \mbox{\hyperlink{classSistema_a1a5e4f4a5d479c7a805d5adc33429ff7}{Guarde}}(std::ofstream\& f, \textcolor{keywordtype}{double} t);}
+\DoxyCodeLine{106 \};}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{109 }
+
+\end{DoxyCode}

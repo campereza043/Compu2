@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/simulacion.dir/main.cpp.o CMakeFiles/simulacion.dir/src/Bola.cpp.o CMakeFiles/simulacion.dir/src/Caja.cpp.o CMakeFiles/simulacion.dir/src/Sistema.cpp.o -o simulacion 

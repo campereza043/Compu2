@@ -1,0 +1,5 @@
+<map id="Bola::ResuelvaColisionParedesRobusto" name="Bola::ResuelvaColisionParedesRobusto">
+<area shape="rect" id="node1" title="Resuelve colisiones robustas con las paredes de la caja." alt="" coords="5,23,228,65"/>
+<area shape="rect" id="node2" href="$classCaja.html#ad0091ef14592dfd7bdb685c5666220dc" title="Retorna el alto de la caja." alt="" coords="277,5,369,32"/>
+<area shape="rect" id="node3" href="$classCaja.html#ab2f4a60f732d4d729ccc27156da20741" title="Retorna el ancho de la caja." alt="" coords="276,56,371,83"/>
+</map>

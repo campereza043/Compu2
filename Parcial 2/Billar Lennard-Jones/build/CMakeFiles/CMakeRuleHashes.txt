@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+c661f64a65f6e9257a3ed10194520f03 /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/documents/html/index.html
+ebcebcc6b59669ac04994239cf525773 /home/debian12/Documentos/UD/Compu2/Parcial1/Billar/documents/latex/refman.pdf
+f0e3c97473e948db2896f984d5799947 CMakeFiles/clean_all
+cd8d7fd6a3345225b206902456b7833c CMakeFiles/documents

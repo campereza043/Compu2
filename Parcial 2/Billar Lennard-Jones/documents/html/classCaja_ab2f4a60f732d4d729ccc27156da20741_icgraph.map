@@ -1,0 +1,6 @@
+<map id="Caja::GetW" name="Caja::GetW">
+<area shape="rect" id="node1" title="Retorna el ancho de la caja." alt="" coords="276,64,371,91"/>
+<area shape="rect" id="node2" href="$classSistema.html#af7686509bf666db925fc410868e072a6" title="Inicializa las bolas en una configuración de rejilla." alt="" coords="25,5,208,32"/>
+<area shape="rect" id="node3" href="$classBola.html#a2fd6de1df92adc47882e7d9a32da0ec5" title="Resuelve colisiones robustas con las paredes de la caja." alt="" coords="5,57,228,98"/>
+<area shape="rect" id="node4" href="$classBola.html#a593052a47503dd40e15603215b307825" title="Resuelve colisiones simples con las paredes de la caja." alt="" coords="5,122,228,163"/>
+</map>

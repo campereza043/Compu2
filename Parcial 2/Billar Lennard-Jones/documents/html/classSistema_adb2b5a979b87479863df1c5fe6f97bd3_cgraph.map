@@ -1,0 +1,4 @@
+<map id="Sistema::DefinaCaja" name="Sistema::DefinaCaja">
+<area shape="rect" id="node1" title="Define las dimensiones de la caja contenedora." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$classCaja.html#a9cd8809c372b290af430b7d8ce2c3e03" title="Define las dimensiones de la caja." alt="" coords="208,5,309,32"/>
+</map>

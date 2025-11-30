@@ -1,0 +1,4 @@
+<map id="Bola.h" name="Bola.h">
+<area shape="rect" id="node1" title="Define la clase Bola que representa una partícula (bola) en el sistema de billar." alt="" coords="5,5,68,32"/>
+<area shape="rect" id="node2" href="$Caja_8h.html" title="Define la clase Caja que representa el contenedor rectangular del sistema de billar." alt="" coords="5,80,68,107"/>
+</map>
