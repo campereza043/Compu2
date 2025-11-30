@@ -35,8 +35,8 @@ int main() {
     const double m = 1.0;
     const double r_viz = 0.2;    
     const double eps = 1.0;      
-    const double sigma = 1.0;    
-    const double vmax = 2.0;
+    const double sigma = 1.8;    
+    const double vmax = 4.0;
 
     // --- 2. Configuración del Sistema ---
     sim.DefinaCaja(W, H);
