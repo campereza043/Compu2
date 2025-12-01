@@ -62,6 +62,12 @@ docs:
 	@echo "\\includegraphics[width=0.9\\textwidth]{../results/estados.png}" >> $(DOCS_DIR)/reporte.tex
 	@echo "\\caption{Ciclo quimico (ON/OFF) que impulsa el motor.} " >> $(DOCS_DIR)/reporte.tex
 	@echo "\\end{figure}" >> $(DOCS_DIR)/reporte.tex
+
+	@echo "\\begin{figure}[H]" >> $(DOCS_DIR)/reporte.tex
+	@echo "\\centering" >> $(DOCS_DIR)/reporte.tex
+	@echo "\\includegraphics[width=0.9\\textwidth]{../results/desplazamiento_neto.png}" >> $(DOCS_DIR)/reporte.tex
+	@echo "\\caption{Desplazamiento neto de la particula a lo largo de toda la simulacion. La pendiente representa la velocidad de transporte.} " >> $(DOCS_DIR)/reporte.tex
+	@echo "\\end{figure}" >> $(DOCS_DIR)/reporte.tex
 	
 	@echo "\\end{document}" >> $(DOCS_DIR)/reporte.tex
 	@echo "Documentacion generada en $(DOCS_DIR)/reporte.tex"

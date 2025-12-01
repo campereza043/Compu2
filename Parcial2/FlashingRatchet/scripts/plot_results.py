@@ -80,3 +80,31 @@ plt.tight_layout()
 plt.savefig(os.path.join(results_dir, 'estados.png'), dpi=300)
 plt.close()
 print("Generado: estados.png")
+
+# --- GRÁFICA 4: DESPLAZAMIENTO NETO (Trayectoria Completa) ---
+plt.figure(figsize=(10, 5))
+
+# Usamos 'data' directamente para ver todo el tiempo de simulación, no solo el 'subset'
+plt.plot(data['t'], data['x'], color='darkcyan', lw=1.2, label='Trayectoria Global')
+
+# Cálculo de la velocidad media (pendiente de la recta)
+x_final = data['x'].iloc[-1]
+x_inicial = data['x'].iloc[0]
+t_final = data['t'].iloc[-1]
+t_inicial = data['t'].iloc[0]
+v_media = (x_final - x_inicial) / (t_final - t_inicial)
+
+# Graficar línea de tendencia (velocidad media)
+plt.plot([t_inicial, t_final], [x_inicial, x_final], 'r--', lw=1, 
+         label=f'Velocidad Media: {v_media:.4f}')
+
+plt.title(f'Desplazamiento Neto Acumulado (Simulación Completa)')
+plt.ylabel('Desplazamiento $x$ (u.a.)')
+plt.xlabel('Tiempo $t$ (u.a.)')
+plt.grid(True, linestyle='-', alpha=0.3)
+plt.legend(loc='upper left')
+
+plt.tight_layout()
+plt.savefig(os.path.join(results_dir, 'desplazamiento_neto.png'), dpi=300)
+plt.close()
+print("Generado: desplazamiento_neto.png")

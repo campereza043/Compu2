@@ -1,9 +1,10 @@
 /**
  * @file main.cpp
  * @brief Punto de entrada de la simulación del Flashing Ratchet.
- * * Permite dos modos de ejecución:
- * 1. Interactivo: Si se ejecuta sin argumentos, solicita parámetros al usuario.
+ * * Modos de ejecución:
+ * 1. Interactivo: ./simulacion (solicita parámetros)
  * 2. Batch: ./simulacion <T_on> <T_off> <total_time> <gamma> <kBT>
+ * * @note Al finalizar, ejecuta automáticamente el script de graficación.
  */
 
 #include <iostream>
@@ -11,7 +12,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
-#include <cstdlib>
+#include <cstdlib> // Necesario para std::system
 #include "../include/MotorModel.h"
 #include "../include/Integrator.h"
 
@@ -21,17 +22,17 @@ void showUsage(const char* progName) {
 }
 
 int main(int argc, char* argv[]) {
-    // Valores por defecto / Variables
-    double m = 1.0;          // Masa (fija para este examen)
-    double dt = 0.005;       // Paso de tiempo (fijo para estabilidad)
+    // --- 1. CONFIGURACIÓN Y PARÁMETROS ---
     
-    // Parámetros modificables por el usuario
+    // Valores fijos para este examen/modelo
+    double m = 1.0;          
+    double dt = 0.005;       
+    
+    // Variables de usuario
     double T_on, T_off, total_time, gamma, kBT;
 
-    // --- LOGICA DE ENTRADA DE USUARIO ---
     if (argc >= 6) {
-        // MODO BATCH (Argumentos de linea de comandos)
-        // Orden: T_on T_off total_time gamma kBT
+        // MODO BATCH
         try {
             T_on = std::atof(argv[1]);
             T_off = std::atof(argv[2]);
@@ -66,11 +67,13 @@ int main(int argc, char* argv[]) {
         std::cout << "--- Iniciando simulacion... ---" << std::endl;
     }
 
-    // Instanciar Modelo e Integrador
+    // --- 2. INICIALIZACIÓN DEL SISTEMA ---
+    
     MotorModel motor(m, gamma, kBT, T_on, T_off);
     VelocityVerlet integrator;
 
     // Configuración de archivo de salida
+    // Se asume que la carpeta 'results' ya fue creada por CMake
     std::string filename = "../results/datos_ratchet.dat";
     std::ofstream outfile(filename);
 
@@ -79,17 +82,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Cabecera del archivo
+    // Cabecera del archivo .dat
     outfile << "t\tx\tv\tstate\tE_total\n";
 
-    // Calcular fuerzas iniciales
+    // Calcular fuerzas iniciales antes del primer paso
     motor.computeForces(dt);
 
-    // Bucle de simulación
+    // --- 3. BUCLE DE SIMULACIÓN ---
+    
     int print_freq = 20; // Guardar cada 20 pasos (aprox dt*20 = 0.1s)
     int step_count = 0;
 
     for (double t = 0; t < total_time; t += dt) {
+        // Guardar datos
         if (step_count % print_freq == 0) { 
             outfile << t << "\t" 
                     << motor.p.x << "\t" 
@@ -97,13 +102,34 @@ int main(int argc, char* argv[]) {
                     << motor.chemistry.getState() << "\t"
                     << motor.getTotalEnergy() << "\n";
         }
+        
+        // Avanzar un paso temporal
         integrator.step(motor, dt);
         step_count++;
     }
 
+    // Cerrar archivo para asegurar que todos los datos se escriban en disco
     outfile.close();
-    std::cout << "Simulacion completada exitosamente." << std::endl;
+    std::cout << "Simulacion completada." << std::endl;
     std::cout << "Datos guardados en: " << filename << std::endl;
+
+    // --- 4. GENERACIÓN AUTOMÁTICA DE GRÁFICAS ---
+    
+    std::cout << "--------------------------------------" << std::endl;
+    std::cout << "Ejecutando script de graficacion..." << std::endl;
+
+    // Llamada al sistema para ejecutar Python
+    // NOTA: Se asume que el ejecutable está en 'build/' y el script en 'scripts/'
+    // El comando busca el script subiendo un nivel y entrando a scripts.
+    int plot_status = std::system("python3 ../scripts/plot_results.py");
+
+    if (plot_status == 0) {
+        std::cout << ">> Graficas generadas exitosamente en la carpeta 'results'." << std::endl;
+    } else {
+        std::cerr << ">> Advertencia: No se pudo ejecutar el script de Python." << std::endl;
+        std::cerr << "   Verifique que 'plot_results.py' este en '../scripts/' y tenga Python instalado." << std::endl;
+    }
+    std::cout << "--------------------------------------" << std::endl;
 
     return 0;
 }
