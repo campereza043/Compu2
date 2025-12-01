@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Ingrese Tiempo Apagado (T_off) [Sugerido 20.0]: ";
         std::cin >> T_off;
         
-        std::cout << "Ingrese Tiempo Total Simulacion [Sugerido 1000.0]: ";
+        std::cout << "Ingrese Tiempo Total Simulacion [Sugerido 200.0]: ";
         std::cin >> total_time;
         
         std::cout << "Ingrese Coeficiente Friccion (gamma) [Sugerido 0.5]: ";
