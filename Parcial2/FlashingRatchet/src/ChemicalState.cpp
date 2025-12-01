@@ -1,3 +1,4 @@
+/** @file ChemicalState.cpp */
 #include "../include/ChemicalState.h"
 
 ChemicalState::ChemicalState(double t_on, double t_off) 
@@ -5,11 +6,12 @@ ChemicalState::ChemicalState(double t_on, double t_off)
 
 void ChemicalState::update(double dt) {
     time_in_state += dt;
+    // Lógica determinista simple para conmutar estados
     if (state == 1 && time_in_state >= period_on) {
-        state = 0;
+        state = 0; // Apagar
         time_in_state = 0;
     } else if (state == 0 && time_in_state >= period_off) {
-        state = 1;
+        state = 1; // Encender
         time_in_state = 0;
     }
 }

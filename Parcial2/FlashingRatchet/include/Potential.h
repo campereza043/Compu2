@@ -1,7 +1,15 @@
+/**
+ * @file Potential.h
+ * @brief Define potenciales de interacción.
+ */
+
 #ifndef POTENTIAL_H
 #define POTENTIAL_H
 
-[cite_start]// Clase abstracta base [cite: 69]
+/**
+ * @class Potential
+ * @brief Clase base abstracta para potenciales 1D.
+ */
 class Potential {
 public:
     virtual double getEnergy(double x) const = 0;
@@ -9,12 +17,16 @@ public:
     virtual ~Potential() {}
 };
 
-// Implementación del Potencial de Ratchet (Diente de sierra)
+/**
+ * @class RatchetPotential
+ * @brief Potencial periódico asimétrico (diente de sierra).
+ * * U(x) periódica con periodo L y asimetría alpha.
+ */
 class RatchetPotential : public Potential {
 private:
-    double L;      // Periodo
-    double U0;     // Altura
-    double alpha;  // Asimetría (0 < alpha < 1)
+    double L;      ///< Periodo espacial
+    double U0;     ///< Altura de la barrera de potencial
+    double alpha;  ///< Factor de asimetría (0 < alpha < 1)
 
 public:
     RatchetPotential(double period, double height, double asymmetry);

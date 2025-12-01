@@ -1,3 +1,4 @@
+/** @file Particle.cpp */
 #include "../include/Particle.h"
 
 Particle::Particle(double mass, double x0, double v0) 

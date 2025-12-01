@@ -1,0 +1,4 @@
+/home/debian12/Documentos/UD/Compu2/Parcial2/FlashingRatchet/build/CMakeFiles/simulacion.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/FlashingRatchet/build/CMakeFiles/run_pipeline.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/FlashingRatchet/build/CMakeFiles/edit_cache.dir
+/home/debian12/Documentos/UD/Compu2/Parcial2/FlashingRatchet/build/CMakeFiles/rebuild_cache.dir

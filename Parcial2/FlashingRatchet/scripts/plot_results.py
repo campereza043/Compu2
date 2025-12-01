@@ -2,44 +2,81 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Ajustar ruta para leer desde la carpeta results
-csv_path = os.path.join(os.path.dirname(__file__), '../results/datos_ratchet.csv')
-data = pd.read_csv(csv_path)
+# --- CONFIGURACIÓN ---
+# Definir rutas relativas
+base_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_dir, '../results/datos_ratchet.dat')
+results_dir = os.path.join(base_dir, '../results')
 
-fig, axs = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
-plt.subplots_adjust(hspace=0.1)
+# Cargar datos
+try:
+    data = pd.read_csv(csv_path, sep='\t')
+except FileNotFoundError:
+    print(f"Error: No se encuentra {csv_path}. Ejecuta la simulación primero.")
+    exit()
 
-# Zoom para ver detalles
+# Filtrar datos para visualizar mejor (Zoom en los primeros 200s o 400s)
+# Si quieres ver todo, comenta la siguiente línea o cambia el valor.
 subset = data[data['t'] < 200]
 states = subset['state'].values
 times = subset['t'].values
 
-# 1. Trayectoria
-axs[0].set_ylabel('Posición $x(t)$')
-axs[0].set_title('Flashing Ratchet: Transporte Dirigido')
-axs[0].plot(subset['t'], subset['x'], 'b-', lw=1.5, label='Partícula')
+# Configuración estética general
+plt.rcParams.update({'font.size': 12})
+
+# --- GRÁFICA 1: TRAYECTORIA (Transporte Dirigido) ---
+plt.figure(figsize=(10, 5))
+plt.plot(subset['t'], subset['x'], 'b-', lw=1.5, label='Partícula $x(t)$')
+plt.title('Flashing Ratchet: Transporte Dirigido')
+plt.ylabel('Posición $x$ (u.a.)')
+plt.xlabel('Tiempo $t$ (u.a.)')
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# Sombrear zonas OFF (Difusión libre)
+ylim = plt.gca().get_ylim()
+plt.fill_between(subset['t'], ylim[0], ylim[1], 
+                 where=(subset['state'] == 0), 
+                 color='gray', alpha=0.2, label='Fase OFF (Difusión)')
+
+plt.legend(loc='upper left')
+plt.tight_layout()
+plt.savefig(os.path.join(results_dir, 'trayectoria.png'), dpi=300)
+plt.close()
+print("Generado: trayectoria.png")
+
+
+# --- GRÁFICA 2: ENERGÍA (Conservación y Fluctuación) ---
+plt.figure(figsize=(10, 5))
+plt.plot(subset['t'], subset['E_total'], 'r-', lw=1.2, label='Energía Total')
+plt.title('Evolución de la Energía Total')
+plt.ylabel('Energía $E$')
+plt.xlabel('Tiempo $t$')
+plt.grid(True, linestyle='--', alpha=0.6)
 
 # Sombrear zonas OFF
-for i in range(len(states)-1):
-    if states[i] == 0:
-        axs[0].axvspan(times[i], times[i+1], color='gray', alpha=0.2, lw=0)
+ylim = plt.gca().get_ylim()
+plt.fill_between(subset['t'], ylim[0], ylim[1], 
+                 where=(subset['state'] == 0), 
+                 color='gray', alpha=0.2, label='Fase OFF')
 
-# 2. Energía
-axs[1].set_ylabel('Energía Total')
-axs[1].plot(subset['t'], subset['E_total'], 'r-', lw=1)
-for i in range(len(states)-1):
-    if states[i] == 0:
-        axs[1].axvspan(times[i], times[i+1], color='gray', alpha=0.2, lw=0)
+plt.legend()
+plt.tight_layout()
+plt.savefig(os.path.join(results_dir, 'energia.png'), dpi=300)
+plt.close()
+print("Generado: energia.png")
 
-# 3. Ciclos ON/OFF
-axs[2].set_ylabel('Estado Potencial')
-axs[2].set_xlabel('Tiempo')
-axs[2].plot(subset['t'], subset['state'], 'k-', lw=2)
-axs[2].fill_between(subset['t'], subset['state'], color='orange', alpha=0.3)
-axs[2].set_yticks([0, 1])
-axs[2].set_yticklabels(['OFF', 'ON'])
 
-# Guardar en results
-output_path = os.path.join(os.path.dirname(__file__), '../results/graficas_ratchet.png')
-plt.savefig(output_path, dpi=300)
-print(f"Gráfica guardada en: {output_path}")
+# --- GRÁFICA 3: ESTADOS (Ciclo Químico / Motor) ---
+plt.figure(figsize=(10, 3))
+plt.plot(subset['t'], subset['state'], 'k-', lw=2)
+plt.fill_between(subset['t'], subset['state'], color='orange', alpha=0.4, label='ON (Potencial Activo)')
+plt.title('Ciclo de Trabajo del Motor (ON/OFF)')
+plt.ylabel('Estado $s(t)$')
+plt.xlabel('Tiempo $t$')
+plt.yticks([0, 1], ['OFF (0)', 'ON (1)'])
+plt.grid(True, axis='x', linestyle='--', alpha=0.6)
+plt.legend(loc='upper right')
+plt.tight_layout()
+plt.savefig(os.path.join(results_dir, 'estados.png'), dpi=300)
+plt.close()
+print("Generado: estados.png")
