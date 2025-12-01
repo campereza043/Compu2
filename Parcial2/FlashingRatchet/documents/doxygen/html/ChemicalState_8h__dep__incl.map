@@ -1,9 +1,0 @@
-<map id="include/ChemicalState.h" name="include/ChemicalState.h">
-<area shape="rect" id="node1" title="Gestiona el estado químico del motor (ON/OFF)." alt="" coords="221,5,401,32"/>
-<area shape="rect" id="node2" href="$MotorModel_8h.html" title="Modelo físico del motor molecular (Flashing Ratchet)." alt="" coords="135,80,298,107"/>
-<area shape="rect" id="node7" href="$ChemicalState_8cpp.html" title=" " alt="" coords="323,80,489,107"/>
-<area shape="rect" id="node3" href="$Integrator_8h.html" title="Define esquemas de integración numérica." alt="" coords="31,155,179,181"/>
-<area shape="rect" id="node5" href="$main_8cpp.html" title="Punto de entrada de la simulación del Flashing Ratchet." alt="" coords="164,229,269,256"/>
-<area shape="rect" id="node6" href="$MotorModel_8cpp.html" title=" " alt="" coords="255,155,405,181"/>
-<area shape="rect" id="node4" href="$Integrator_8cpp.html" title=" " alt="" coords="5,229,140,256"/>
-</map>

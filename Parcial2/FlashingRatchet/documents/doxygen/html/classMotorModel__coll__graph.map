@@ -1,5 +1,0 @@
-<map id="MotorModel" name="MotorModel">
-<area shape="rect" id="node1" title="Combina partícula, potencial y estado químico." alt="" coords="49,95,149,121"/>
-<area shape="rect" id="node2" href="$structParticle.html" title=" " alt="" coords="5,5,76,32"/>
-<area shape="rect" id="node3" href="$classChemicalState.html" title=" " alt="" coords="101,5,218,32"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Integrator" name="Integrator">
-<area shape="rect" id="node1" title="Clase base abstracta para integradores numéricos." alt="" coords="18,5,105,32"/>
-<area shape="rect" id="node2" href="$classVelocityVerlet.html" title="Implementación del algoritmo Velocity&#45;Verlet." alt="" coords="5,80,117,107"/>
-</map>

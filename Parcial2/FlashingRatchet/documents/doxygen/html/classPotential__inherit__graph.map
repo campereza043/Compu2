@@ -1,4 +1,0 @@
-<map id="Potential" name="Potential">
-<area shape="rect" id="node1" title="Clase base abstracta para potenciales 1D." alt="" coords="31,5,111,32"/>
-<area shape="rect" id="node2" href="$classRatchetPotential.html" title="Potencial periódico asimétrico (diente de sierra)." alt="" coords="5,80,136,107"/>
-</map>
