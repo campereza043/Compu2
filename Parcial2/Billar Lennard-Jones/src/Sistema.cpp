@@ -102,7 +102,7 @@ void Sistema::Paso(double dt) {
     PasoVelocityVerlet(dt);
 }
 
-// MODIFICADO: Uso de \t para separar columnas (.dat style)
+
 void Sistema::Encabezado(std::ofstream& f) {
     f << "t";
     for(size_t i=0; i<bolas.size(); ++i) 
@@ -110,7 +110,7 @@ void Sistema::Encabezado(std::ofstream& f) {
     f << "\n";
 }
 
-// MODIFICADO: Uso de \t para separar datos
+
 void Sistema::Guarde(std::ofstream& f, double t) {
     f << t;
     for (const auto& b : bolas) {

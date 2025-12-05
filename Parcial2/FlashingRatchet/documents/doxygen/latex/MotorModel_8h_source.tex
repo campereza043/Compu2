@@ -1,0 +1,38 @@
+\hypertarget{MotorModel_8h_source}{}\doxysection{Motor\+Model.\+h}
+\label{MotorModel_8h_source}\index{include/MotorModel.h@{include/MotorModel.h}}
+\mbox{\hyperlink{MotorModel_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifndef MOTORMODEL\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define MOTORMODEL\_H}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Particle_8h}{Particle.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Potential_8h}{Potential.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ChemicalState_8h}{ChemicalState.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classMotorModel}{MotorModel}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{structParticle}{Particle}} p;}
+\DoxyCodeLine{23     std::unique\_ptr<Potential> potential;}
+\DoxyCodeLine{24     \mbox{\hyperlink{classChemicalState}{ChemicalState}} chemistry;}
+\DoxyCodeLine{25     }
+\DoxyCodeLine{26     \textcolor{comment}{// Parámetros Langevin}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{double} \mbox{\hyperlink{classMotorModel_acf73a11a766db3d2986fdb0c4ae5aa33}{gamma}}; }
+\DoxyCodeLine{28     \textcolor{keywordtype}{double} \mbox{\hyperlink{classMotorModel_a04ae8b4dacb3f8229bcd7f3ac0bce24a}{kBT}};   }
+\DoxyCodeLine{29     }
+\DoxyCodeLine{30     \textcolor{comment}{// Generador de números aleatorios para ruido térmico}}
+\DoxyCodeLine{31     std::mt19937 rng;}
+\DoxyCodeLine{32     std::normal\_distribution<double> noise\_dist;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{37     \mbox{\hyperlink{classMotorModel_ada6d12bdea8ed30576a5b9bb26b4dafa}{MotorModel}}(\textcolor{keywordtype}{double} m, \textcolor{keywordtype}{double} gamma\_val, \textcolor{keywordtype}{double} temp, \textcolor{keywordtype}{double} t\_on, \textcolor{keywordtype}{double} t\_off);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMotorModel_a05e7556b70e7b65b47216ed8bf46af3e}{computeForces}}(\textcolor{keywordtype}{double} dt);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{double} \mbox{\hyperlink{classMotorModel_ae5a0cdcef7ed4b64a3846499ed41ddc7}{getTotalEnergy}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{49 \};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

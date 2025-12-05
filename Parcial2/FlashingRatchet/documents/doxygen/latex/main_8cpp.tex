@@ -1,0 +1,51 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+Punto de entrada de la simulación del Flashing Ratchet.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include \char`\"{}../include/\+Motor\+Model.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/\+Integrator.\+h\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_abdff9d04be342844dd7f45bbb65bb485}\label{main_8cpp_abdff9d04be342844dd7f45bbb65bb485}} 
+void {\bfseries show\+Usage} (const char $\ast$prog\+Name)
+\item 
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Punto de entrada de la simulación del Flashing Ratchet. 
+
+
+\begin{DoxyItemize}
+\item Modos de ejecución\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Interactivo\+: ./simulacion (solicita parámetros)
+\item Batch\+: ./simulacion $<$\+T\+\_\+on$>$ $<$\+T\+\_\+off$>$ $<$total\+\_\+time$>$ $<$gamma$>$ $<$k\+BT$>$
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item \begin{DoxyNote}{Note}
+Al finalizar, ejecuta automáticamente el script de graficación. 
+\end{DoxyNote}
+
+\end{DoxyItemize}

@@ -1,0 +1,88 @@
+\hypertarget{classMotorModel}{}\doxysection{Motor\+Model Class Reference}
+\label{classMotorModel}\index{MotorModel@{MotorModel}}
+
+
+Combina partícula, potencial y estado químico.  
+
+
+
+
+{\ttfamily \#include $<$Motor\+Model.\+h$>$}
+
+
+
+Collaboration diagram for Motor\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classMotorModel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMotorModel_ada6d12bdea8ed30576a5b9bb26b4dafa}\label{classMotorModel_ada6d12bdea8ed30576a5b9bb26b4dafa}} 
+{\bfseries Motor\+Model} (double m, double gamma\+\_\+val, double temp, double t\+\_\+on, double t\+\_\+off)
+\begin{DoxyCompactList}\small\item\em Constructor del modelo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMotorModel_a05e7556b70e7b65b47216ed8bf46af3e}{compute\+Forces}} (double dt)
+\begin{DoxyCompactList}\small\item\em Calcula todas las fuerzas sobre la partícula (Potencial + Fricción + Ruido). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMotorModel_ae5a0cdcef7ed4b64a3846499ed41ddc7}\label{classMotorModel_ae5a0cdcef7ed4b64a3846499ed41ddc7}} 
+double {\bfseries get\+Total\+Energy} () const
+\begin{DoxyCompactList}\small\item\em Calcula la energía total del sistema (Cinética + Potencial actual). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMotorModel_ae06088b696d23586a0c3063d3c1e05fa}\label{classMotorModel_ae06088b696d23586a0c3063d3c1e05fa}} 
+\mbox{\hyperlink{structParticle}{Particle}} {\bfseries p}
+\item 
+\mbox{\Hypertarget{classMotorModel_aead052eb770d86450cc9b047866f0695}\label{classMotorModel_aead052eb770d86450cc9b047866f0695}} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPotential}{Potential}} $>$ {\bfseries potential}
+\item 
+\mbox{\Hypertarget{classMotorModel_a8a3e57ec5590154f1db159381081d843}\label{classMotorModel_a8a3e57ec5590154f1db159381081d843}} 
+\mbox{\hyperlink{classChemicalState}{Chemical\+State}} {\bfseries chemistry}
+\item 
+\mbox{\Hypertarget{classMotorModel_acf73a11a766db3d2986fdb0c4ae5aa33}\label{classMotorModel_acf73a11a766db3d2986fdb0c4ae5aa33}} 
+double {\bfseries gamma}
+\begin{DoxyCompactList}\small\item\em Coeficiente de fricción. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMotorModel_a04ae8b4dacb3f8229bcd7f3ac0bce24a}\label{classMotorModel_a04ae8b4dacb3f8229bcd7f3ac0bce24a}} 
+double {\bfseries k\+BT}
+\begin{DoxyCompactList}\small\item\em Energía térmica (kB $\ast$ T) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMotorModel_aa1ad13c01f62c9fdb445ab2090c215c0}\label{classMotorModel_aa1ad13c01f62c9fdb445ab2090c215c0}} 
+std\+::mt19937 {\bfseries rng}
+\item 
+\mbox{\Hypertarget{classMotorModel_ad2f8a67fa7f722ab74d9ca93d37367ca}\label{classMotorModel_ad2f8a67fa7f722ab74d9ca93d37367ca}} 
+std\+::normal\+\_\+distribution$<$ double $>$ {\bfseries noise\+\_\+dist}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Combina partícula, potencial y estado químico. 
+
+
+\begin{DoxyItemize}
+\item Resuelve la ecuación\+: m$\ast$a = -\/d\+U/dx -\/ gamma$\ast$v + ruido 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMotorModel_a05e7556b70e7b65b47216ed8bf46af3e}\label{classMotorModel_a05e7556b70e7b65b47216ed8bf46af3e}} 
+\index{MotorModel@{MotorModel}!computeForces@{computeForces}}
+\index{computeForces@{computeForces}!MotorModel@{MotorModel}}
+\doxysubsubsection{\texorpdfstring{computeForces()}{computeForces()}}
+{\footnotesize\ttfamily void Motor\+Model\+::compute\+Forces (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+Calcula todas las fuerzas sobre la partícula (Potencial + Fricción + Ruido). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Paso de tiempo (necesario para escalar el ruido). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{MotorModel_8h}{Motor\+Model.\+h}}\item 
+src/\mbox{\hyperlink{MotorModel_8cpp}{Motor\+Model.\+cpp}}\end{DoxyCompactItemize}

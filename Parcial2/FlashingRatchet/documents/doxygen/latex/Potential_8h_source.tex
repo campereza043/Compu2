@@ -1,0 +1,30 @@
+\hypertarget{Potential_8h_source}{}\doxysection{Potential.\+h}
+\label{Potential_8h_source}\index{include/Potential.h@{include/Potential.h}}
+\mbox{\hyperlink{Potential_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#ifndef POTENTIAL\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define POTENTIAL\_H}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classPotential}{Potential}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} getEnergy(\textcolor{keywordtype}{double} x) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{16     \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} getForce(\textcolor{keywordtype}{double} x) \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{17     \textcolor{keyword}{virtual} \mbox{\hyperlink{classPotential}{\string~Potential}}() \{\}}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classRatchetPotential}{RatchetPotential}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPotential}{Potential}} \{}
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{double} L;      }
+\DoxyCodeLine{28     \textcolor{keywordtype}{double} U0;     }
+\DoxyCodeLine{29     \textcolor{keywordtype}{double} alpha;  }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     \mbox{\hyperlink{classRatchetPotential}{RatchetPotential}}(\textcolor{keywordtype}{double} period, \textcolor{keywordtype}{double} height, \textcolor{keywordtype}{double} asymmetry);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{double} getEnergy(\textcolor{keywordtype}{double} x) \textcolor{keyword}{const override};}
+\DoxyCodeLine{34     \textcolor{keywordtype}{double} getForce(\textcolor{keywordtype}{double} x) \textcolor{keyword}{const override};}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

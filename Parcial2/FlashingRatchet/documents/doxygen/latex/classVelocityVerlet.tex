@@ -1,0 +1,74 @@
+\hypertarget{classVelocityVerlet}{}\doxysection{Velocity\+Verlet Class Reference}
+\label{classVelocityVerlet}\index{VelocityVerlet@{VelocityVerlet}}
+
+
+Implementación del algoritmo Velocity-\/\+Verlet.  
+
+
+
+
+{\ttfamily \#include $<$Integrator.\+h$>$}
+
+
+
+Inheritance diagram for Velocity\+Verlet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classVelocityVerlet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Velocity\+Verlet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classVelocityVerlet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classVelocityVerlet_ae0ec14e69a690bf15c5b98ef4da84344}{step}} (\mbox{\hyperlink{classMotorModel}{Motor\+Model}} \&motor, double dt) override
+\begin{DoxyCompactList}\small\item\em Avanza el sistema un paso de tiempo dt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementación del algoritmo Velocity-\/\+Verlet. 
+
+
+\begin{DoxyItemize}
+\item Es un integrador simpléctico de segundo orden, estable para MD. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVelocityVerlet_ae0ec14e69a690bf15c5b98ef4da84344}\label{classVelocityVerlet_ae0ec14e69a690bf15c5b98ef4da84344}} 
+\index{VelocityVerlet@{VelocityVerlet}!step@{step}}
+\index{step@{step}!VelocityVerlet@{VelocityVerlet}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Velocity\+Verlet\+::step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMotorModel}{Motor\+Model}} \&}]{motor,  }\item[{double}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Avanza el sistema un paso de tiempo dt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em motor} & Referencia al modelo del motor molecular. \\
+\hline
+{\em dt} & Paso de tiempo. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIntegrator_afaa0ee0499646283028f4fe8be0f9467}{Integrator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Integrator_8h}{Integrator.\+h}}\item 
+src/\mbox{\hyperlink{Integrator_8cpp}{Integrator.\+cpp}}\end{DoxyCompactItemize}
